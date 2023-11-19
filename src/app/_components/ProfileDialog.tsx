@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 
 import { signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,51 +12,59 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import useUserInfo from "@/hooks/useUserInfo";
 
-export default function AuthDialog() {
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const router = useRouter();
-  const searchParams = useSearchParams();
+import { SettingForm } from "./SettingForm";
+
+/* eslint-disable @next/next/no-img-element */
+
+export default function ProfileDialog() {
   const { session } = useUserInfo();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
-    const open = searchParams.get("open");
-
-    if (open) {
-      setDialogOpen(true);
-    }
-  }, [searchParams]);
-
-  useEffect(() => {
-    if (session && session.user) {
-      setDialogOpen(false);
-      router.push("/");
-    } else {
-      setDialogOpen(true);
-    }
-  }, [router, session]);
+    setDialogOpen(false);
+  }, []);
 
   const handleOpenChange = (open: boolean) => {
     if (open) {
       setDialogOpen(true);
     } else {
-      session && setDialogOpen(false);
-      router.push("/");
+      setDialogOpen(false);
     }
   };
 
   return (
     <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogTrigger>
+        <div className="flex cursor-pointer items-center gap-2 rounded-full p-3">
+          {session?.user && (
+            <img
+              src={session?.user?.image as string}
+              alt="user avatar"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+          )}
+        </div>
+      </DialogTrigger>
+
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Welcome to Picbook Home!</DialogTitle>
           <DialogDescription>Sign in to get all Picbooks~~</DialogDescription>
         </DialogHeader>
 
+        {session && <SettingForm></SettingForm>}
+
         <DialogFooter>
-          <Button className="round-xl mr-5" onClick={() => signIn()}>
+          <Button
+            className={`round-xl mr-5 ${session?.user && "hidden"}`}
+            onClick={() => signIn()}
+          >
             Sign In
           </Button>
           <Button className="round-xl" onClick={() => signOut()}>

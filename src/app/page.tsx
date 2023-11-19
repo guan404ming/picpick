@@ -26,9 +26,5 @@ export default async function Home() {
       .execute();
   }
 
-  return (
-    <div>
-      <AuthDialog></AuthDialog>
-    </div>
-  );
+  return <div>{/* <AuthDialog></AuthDialog> */}</div>;
 }

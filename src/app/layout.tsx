@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 
-import Sider from "./_components/Sider";
 import NextAuthProvider from "@/lib/auth/NextAuthProvider";
+import { NextThemeProvider } from "@/lib/theme/NextThemesProvider";
+
+import Sider from "./_components/Sider";
 import "./globals.css";
 
 const noto = Noto_Sans({
@@ -27,8 +29,14 @@ export default function RootLayout({
       <NextAuthProvider>
         <body className={noto.className}>
           <div className="mx-auto flex">
-            <Sider />
-            <main className="flex min-h-screen w-full">{children}</main>
+            <NextThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+            >
+              <Sider />
+              <main className="flex min-h-screen w-full">{children}</main>
+            </NextThemeProvider>
           </div>
         </body>
       </NextAuthProvider>
