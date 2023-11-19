@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { SessionProvider } from "next-auth/react";
 import { Noto_Sans } from "next/font/google";
 
+import Sider from "./_components/Sider";
+import NextAuthProvider from "./context/NextAuthProvider";
 import "./globals.css";
 
 const noto = Noto_Sans({
@@ -23,15 +24,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <SessionProvider>
+      <NextAuthProvider>
         <body className={noto.className}>
-          <div className="mx-auto flex max-w-6xl">
-            <main className="flex min-h-screen w-full">
-              {children}
-            </main>
+          <div className="mx-auto flex">
+            <Sider />
+            <main className="flex min-h-screen w-full">{children}</main>
           </div>
         </body>
-      </SessionProvider>
+      </NextAuthProvider>
     </html>
   );
 }
