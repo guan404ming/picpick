@@ -31,7 +31,7 @@ export default function RootLayout({
           <div className="mx-auto flex">
             <NextThemeProvider
               attribute="class"
-              defaultTheme="system"
+              defaultTheme="light"
               enableSystem
             >
               <Sider />

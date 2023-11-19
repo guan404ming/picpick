@@ -45,11 +45,7 @@ export default function ProfileDialog() {
               className="rounded-full"
             />
           ) : (
-            <span
-              className={
-                "-m-1 rounded-lg bg-black p-2 text-sm text-white max-lg:hidden"
-              }
-            >
+            <span className={"-m-1 rounded-lg bg-black p-2 text-sm text-white"}>
               Login
             </span>
           )}
