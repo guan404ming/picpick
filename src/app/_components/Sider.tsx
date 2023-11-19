@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,13 +9,15 @@ import picbookHome from "@/assets/picbook-home.png";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
-import ProfileButton from "./ProfileButton";
+import ProfileDialog from "./ProfileDialog";
 
 export default function Sider() {
   return (
-    <aside className="flex h-screen flex-col justify-between px-6 py-6 bg-[#F0F0F0] text-center">
+    <aside
+      className={`flex h-screen flex-col justify-between bg-[#F0F0F0] px-6 py-6 text-center dark:bg-black`}
+    >
       <div className="flex flex-col gap-2">
-        <div className="p-2 mb-2">
+        <div className="mb-2 p-2">
           <Link href="/">
             <Image src={picbookHome} alt="quiztory" width={40} height={40} />
           </Link>
@@ -22,7 +26,7 @@ export default function Sider() {
         <SiderButton Icon={Bot} text="Chat" router="/chat" />
         <SiderButton Icon={Bookmark} text="Saves" router="/saves" />
         <Separator className="my-2" />
-        <ProfileButton />
+        <ProfileDialog />
       </div>
     </aside>
   );
