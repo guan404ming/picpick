@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 
 import Sider from "./_components/Sider";
-import NextAuthProvider from "./context/NextAuthProvider";
+import NextAuthProvider from "@/lib/auth/NextAuthProvider";
 import "./globals.css";
 
 const noto = Noto_Sans({

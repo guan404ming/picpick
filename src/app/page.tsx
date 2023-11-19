@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 
 import { db } from "@/db";
 import { userTable } from "@/db/schema";
-import { authOptions } from "@/lib/auth";
+import { authOptions } from "@/lib/auth/auth";
 
 import AuthDialog from "./_components/AuthDialog";
 
