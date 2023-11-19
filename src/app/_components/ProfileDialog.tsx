@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { signIn, signOut } from "next-auth/react";
 
@@ -24,10 +24,6 @@ export default function ProfileDialog() {
   const { session } = useUserInfo();
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  useEffect(() => {
-    setDialogOpen(false);
-  }, []);
-
   const handleOpenChange = (open: boolean) => {
     if (open) {
       setDialogOpen(true);
@@ -39,8 +35,8 @@ export default function ProfileDialog() {
   return (
     <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger>
-        <div className="flex cursor-pointer items-center gap-2 rounded-full p-3">
-          {session?.user && (
+        <div className="flex cursor-pointer items-center gap-2 rounded-full p-2">
+          {session?.user ? (
             <img
               src={session?.user?.image as string}
               alt="user avatar"
@@ -48,6 +44,14 @@ export default function ProfileDialog() {
               height={40}
               className="rounded-full"
             />
+          ) : (
+            <span
+              className={
+                "-m-1 rounded-lg bg-black p-2 text-sm text-white max-lg:hidden"
+              }
+            >
+              Login
+            </span>
           )}
         </div>
       </DialogTrigger>
@@ -62,13 +66,16 @@ export default function ProfileDialog() {
 
         <DialogFooter>
           <Button
-            className={`round-xl mr-5 ${session?.user && "hidden"}`}
+            className={`round-xl ${session?.user && "mr-5 hidden"}`}
             onClick={() => signIn()}
           >
-            Sign In
+            Login
           </Button>
-          <Button className="round-xl" onClick={() => signOut()}>
-            Sign Out
+          <Button
+            className={`round-xl ${!session?.user && "hidden"}`}
+            onClick={() => signOut()}
+          >
+            Logout
           </Button>
         </DialogFooter>
       </DialogContent>

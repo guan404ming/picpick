@@ -14,7 +14,7 @@ import ProfileDialog from "./ProfileDialog";
 export default function Sider() {
   return (
     <aside
-      className={`flex h-screen flex-col justify-between bg-[#F0F0F0] px-6 py-6 text-center dark:bg-black`}
+      className={`flex h-screen flex-col justify-between bg-[#F0F0F0] px-6 py-6 text-center dark:bg-slate-800`}
     >
       <div className="flex flex-col gap-2">
         <div className="mb-2 p-2">
