@@ -5,7 +5,7 @@ export default function SavesPage() {
   <div className="card">
       <img src="image1.jpg" alt="Book Cover" />
       <div className="card-content">
-          <h2>繪本名稱 1</h2>
+          <h2>繪本名稱</h2>
           <input type="range" value="50" />
       </div>
   </div>
@@ -13,7 +13,7 @@ export default function SavesPage() {
   <div className="card">
       <img src="image2.jpg" alt="Book Cover" />
       <div className="card-content">
-          <h2>繪本名稱 2</h2>
+          <h2>繪本名稱</h2>
           <input type="range" value="50" />
       </div>
   </div>
