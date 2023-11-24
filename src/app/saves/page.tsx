@@ -13,7 +13,10 @@ interface CardProps {
 function Card({ book }: CardProps) {
   return (
     <div style={{ width: '200px', margin: '10px', borderRadius: '10px', padding: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-      <h3 style={{ textAlign: 'center', fontSize: '18px', fontWeight: 'bold' }}>繪本名稱</h3>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+        <h3 style={{ textAlign: 'left', fontSize: '18px', margin: '0' }}>繪本名稱</h3>
+        <span role="img" aria-label="bookmark" style={{ fontSize: '20px' }}>📖</span>
+      </div>
       <img src={book.image} alt={book.title} style={{ maxWidth: '100%', borderRadius: '8px', marginBottom: '10px' }} />
       <input type="range" style={{ width: '100%' }} />
     </div>
