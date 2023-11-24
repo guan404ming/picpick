@@ -7,16 +7,15 @@ interface Book {
 }
 
 interface CardProps {
-  title: string;
-  image: string;
+  book: Book;
 }
 
-function Card({ title, image }: CardProps) {
+function Card({ book }: CardProps) {
   return (
-    <div style={{ width: '200px', margin: '10px' }}>
-      <h3>{title}</h3>
-      <img src={image} alt={title} style={{ maxWidth: '100%' }} />
-      <input type="range" />
+    <div style={{ width: '200px', margin: '10px', borderRadius: '10px', padding: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+      <h3 style={{ textAlign: 'center', fontSize: '18px', fontWeight: 'bold' }}>繪本名稱</h3>
+      <img src={book.image} alt={book.title} style={{ maxWidth: '100%', borderRadius: '8px', marginBottom: '10px' }} />
+      <input type="range" style={{ width: '100%' }} />
     </div>
   );
 }
@@ -24,19 +23,15 @@ function Card({ title, image }: CardProps) {
 export default function SavesPage() {
   const books: Book[] = [
     { id: 1, title: 'Book 1', image: 'book1.jpg' },
-    { id: 2, title: 'Book 2', image: 'book2.jpg' },
-    { id: 3, title: 'Book 3', image: 'book3.jpg' },
-    { id: 4, title: 'Book 4', image: 'book4.jpg' },
-    { id: 5, title: 'Book 5', image: 'book5.jpg' },
-    { id: 6, title: 'Book 6', image: 'book6.jpg' },
+    // ... 其他書籍資料
   ];
 
   return (
     <div>
-      <h1>Saves</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <h1 style={{ fontSize: '24px', fontWeight: 'bold', textAlign: 'center' }}>Saves</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
         {books.map((book) => (
-          <Card key={book.id} title={book.title} image={book.image} />
+          <Card key={book.id} book={book} />
         ))}
       </div>
     </div>
