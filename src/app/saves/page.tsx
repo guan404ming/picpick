@@ -1,36 +1,32 @@
 import React from 'react';
 export default function SavesPage() {
-    return (
-        <div className="card w-[350px]">
-          <div className="card-header">
-            <h2 className="card-title">Create project</h2>
-            <p className="card-description">Deploy your new project in one-click.</p>
-          </div>
-          <div className="card-content">
-            <form>
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
-                  <label htmlFor="name">Name</label>
-                  <input id="name" type="text" placeholder="Name of your project" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <label htmlFor="framework">Framework</label>
-                  <select id="framework">
-                    <option value="" disabled selected>Select</option>
-                    <option value="next">Next.js</option>
-                    <option value="sveltekit">SvelteKit</option>
-                    <option value="astro">Astro</option>
-                    <option value="nuxt">Nuxt.js</option>
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className="card-footer flex justify-between">
-            <button className="btn btn-outline">Cancel</button>
-            <button className="btn btn-primary">Deploy</button>
-          </div>
-        </div>
-      );
-  
+  const books = [
+    { id: 1, title: 'Book 1', image: 'book1.jpg' },
+    { id: 2, title: 'Book 2', image: 'book2.jpg' },
+    { id: 3, title: 'Book 3', image: 'book3.jpg' },
+    { id: 4, title: 'Book 4', image: 'book4.jpg' },
+    { id: 5, title: 'Book 5', image: 'book5.jpg' },
+    { id: 6, title: 'Book 6', image: 'book6.jpg' },
+  ];
+
+  return (
+    <div>
+      <h1>Saves</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {books.map((book) => (
+          <Card key={book.id} title={book.title} image={book.image} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Card({ title, image }) {
+  return (
+    <div style={{ width: '200px', margin: '10px' }}>
+      <h3>{title}</h3>
+      <img src={image} alt={title} style={{ maxWidth: '100%' }} />
+      <input type="range" />
+    </div>
+  );
 } 
