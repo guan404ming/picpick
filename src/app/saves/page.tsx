@@ -13,12 +13,11 @@ interface CardProps {
 function Card({ book }: CardProps) {
   return (
     <div style={{ flex: '1', maxWidth: '250px', margin: '20px 0', borderRadius: '10px', padding: '20px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)' }}>
-      <h3 style={{ textAlign: 'left', fontSize: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <h3 style={{ textAlign: 'left', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
         繪本名稱
         <span style={{ fontSize: '30px', marginRight: '12px' }}>📖</span>
       </h3>
       <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
-      {/* 調整顏色為左黑右灰 */}
       <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 50%, #ccc 50%)', borderRadius: '8px' }} />
     </div>
   );
@@ -36,8 +35,8 @@ export default function SavesPage() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '10%' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px' }}>Saves</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '8%' }}>
+      <h1 style={{ fontSize: '32px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px' }}>Saves</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px' }}>
         {books.map((book) => (
           <div key={book.id} style={{ flex: '0 0 calc(33.33% - 40px)' }}>
