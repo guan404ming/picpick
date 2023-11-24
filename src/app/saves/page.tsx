@@ -26,6 +26,11 @@ function Card({ book }: CardProps) {
 export default function SavesPage() {
   const books: Book[] = [
     { id: 1, title: 'Book 1', image: 'book1.jpg' },
+    { id: 2, title: 'Book 2', image: 'book2.jpg' },
+    { id: 3, title: 'Book 3', image: 'book3.jpg' },
+    { id: 4, title: 'Book 4', image: 'book4.jpg' },
+    { id: 5, title: 'Book 5', image: 'book5.jpg' },
+    { id: 6, title: 'Book 6', image: 'book6.jpg' },
     // ... 其他書籍資料
   ];
 
