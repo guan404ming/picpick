@@ -3,12 +3,14 @@ import React from 'react';
 interface Book {
   id: number;
   title: string;
-  image: string;
+  image: StaticImageData;
 }
 
 interface CardProps {
   book: Book;
 }
+
+import book1Image from './book1.jpg';
 
 function Card({ book }: CardProps) {
   return (
@@ -17,7 +19,8 @@ function Card({ book }: CardProps) {
         繪本名稱
         <span style={{ fontSize: '30px', marginRight: '12px' }}>📖</span>
       </h3>
-      <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
+      {/* 使用导入的图像 */}
+      <img src={book1Image} alt="Book 1" style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
       <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 10%, #ccc 10%, #ccc 90%, black 90%)', borderRadius: '8px' }} />
     </div>
   );
@@ -35,7 +38,7 @@ export default function SavesPage() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingLeft: '20%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '10%' }}>
       <h1 style={{ fontSize: '28px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px' }}>Saves</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px' }}>
         {books.map((book) => (
