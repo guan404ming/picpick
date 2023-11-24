@@ -17,8 +17,8 @@ function Card({ book }: CardProps) {
         繪本名稱
         <span style={{ fontSize: '30px', marginRight: '12px' }}>📖</span>
       </h3>
-      <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px' }} />
-      <input type="range" style={{ width: '100%', height: '8px', appearance: 'none', background: 'black', outline: 'none', borderRadius: '8px' }} />
+      <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
+      <div style={{ width: '100%', height: '20px', background: 'linear-gradient(to right, black 50%, #ccc 50%)', borderRadius: '8px' }} />
     </div>
   );
 }
