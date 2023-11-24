@@ -12,7 +12,7 @@ interface CardProps {
 
 function Card({ book }: CardProps) {
   return (
-    <div style={{ width: '200px', margin: '10px', borderRadius: '10px', padding: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+    <div style={{ flex: '1', maxWidth: '300px', margin: '10px', borderRadius: '10px', padding: '10px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
       <h3 style={{ textAlign: 'left', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         繪本名稱
         <span style={{ fontSize: '24px', marginRight: '8px' }}>📖</span>
@@ -30,7 +30,7 @@ export default function SavesPage() {
   ];
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h1 style={{ fontSize: '28px', fontWeight: 'bold', textAlign: 'center' }}>Saves</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
         {books.map((book) => (
