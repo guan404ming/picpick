@@ -10,8 +10,6 @@ interface CardProps {
   book: Book;
 }
 
-import book1Image from './book1.jpg';
-
 function Card({ book }: CardProps) {
   return (
     <div style={{ flex: '1', maxWidth: '250px', margin: '20px 0', borderRadius: '10px', padding: '20px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)' }}>
@@ -19,8 +17,7 @@ function Card({ book }: CardProps) {
         繪本名稱
         <span style={{ fontSize: '30px', marginRight: '12px' }}>📖</span>
       </h3>
-      {/* 使用字符串路徑 */}
-      <img src={book1Image} alt="Book 1" style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
+      <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
       <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 10%, #ccc 10%, #ccc 90%, black 90%)', borderRadius: '8px' }} />
     </div>
   );
