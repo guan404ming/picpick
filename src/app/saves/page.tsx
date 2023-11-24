@@ -3,7 +3,7 @@ import React from 'react';
 interface Book {
   id: number;
   title: string;
-  image: StaticImageData;
+  image: string;
 }
 
 interface CardProps {
@@ -19,7 +19,7 @@ function Card({ book }: CardProps) {
         繪本名稱
         <span style={{ fontSize: '30px', marginRight: '12px' }}>📖</span>
       </h3>
-      {/* 使用导入的图像 */}
+      {/* 使用字符串路徑 */}
       <img src={book1Image} alt="Book 1" style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
       <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 10%, #ccc 10%, #ccc 90%, black 90%)', borderRadius: '8px' }} />
     </div>
