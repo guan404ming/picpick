@@ -18,7 +18,7 @@ function Card({ book }: CardProps) {
         <span style={{ fontSize: '30px', marginRight: '12px' }}>📖</span>
       </h3>
       <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
-      <div style={{ width: '100%', height: '20px', background: 'linear-gradient(to right, black 50%, #ccc 50%)', borderRadius: '8px' }} />
+      <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 10%, #ccc 10%, #ccc 90%, black 90%)', borderRadius: '8px' }} />
     </div>
   );
 }
@@ -35,7 +35,7 @@ export default function SavesPage() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingLeft: '20%' }}>
       <h1 style={{ fontSize: '28px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px' }}>Saves</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px' }}>
         {books.map((book) => (
