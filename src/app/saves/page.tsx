@@ -17,7 +17,7 @@ function Card({ book }: CardProps) {
         繪本名稱
         <span style={{ fontSize: '24px', marginRight: '8px' }}>📖</span>
       </h3>
-      <img src={book.image} alt={book.title} style={{ maxWidth: '100%', borderRadius: '8px', marginBottom: '10px' }} />
+      <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '10px' }} />
       <input type="range" style={{ width: '100%' }} />
     </div>
   );
@@ -39,7 +39,9 @@ export default function SavesPage() {
       <h1 style={{ fontSize: '28px', fontWeight: 'bold', textAlign: 'center' }}>Saves</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
         {books.map((book) => (
-          <Card key={book.id} book={book} />
+          <div key={book.id} style={{ flex: '0 0 calc(33.33% - 20px)' }}>
+            <Card book={book} />
+          </div>
         ))}
       </div>
     </div>
