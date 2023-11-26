@@ -12,10 +12,10 @@ interface CardProps {
 
 function Card({ book }: CardProps) {
   return (
-    <div style={{ flex: '1', maxWidth: '250px', margin: '20px 0', borderRadius: '10px', padding: '40px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)' }}>
-      <h3 style={{ textAlign: 'left', fontSize: '15px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <div style={{ flex: '1', maxWidth: '250px', borderRadius: '10px', padding: '40px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', textAlign: 'center' }}>
+      <h3 style={{ textAlign: 'left', fontSize: '15px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
         繪本名稱
-        <span style={{ fontSize: '20px', marginRight: '5px' ,marginTop:'3'}}>📖</span>
+        <span style={{ fontSize: '20px', marginRight: '5px' }}>📖</span>
       </h3>
       <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
       <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 50%, #ccc 50%)', borderRadius: '4px' }} />
@@ -35,15 +35,13 @@ export default function SavesPage() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '5%' ,paddingTop:'3%'}}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px', maxWidth: '1200px', margin: '0 auto', paddingLeft: '5%', paddingTop: '3%' }}>
       <h1 style={{ fontSize: '33px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px' }}>Saves</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px' }}>
-        {books.map((book) => (
-          <div key={book.id} style={{ flex: '0 0 calc(33.33% - 40px)', marginRight: '20px' }}>
-            <Card book={book} />
-          </div>
-        ))}
-      </div>
+      {books.map((book) => (
+        <div key={book.id} style={{ flex: '0 0 calc(33.33% - 20px)', margin: '0 10px 20px' }}>
+          <Card book={book} />
+        </div>
+      ))}
     </div>
   );
 }
