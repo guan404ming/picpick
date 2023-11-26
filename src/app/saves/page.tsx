@@ -12,7 +12,7 @@ interface CardProps {
 
 function Card({ book }: CardProps) {
   return (
-    <div style={{ flex: '1', maxWidth: '250px', margin: '20px 0', borderRadius: '10px', padding: '40px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)' }}>
+    <div style={{ flex: '1', maxWidth: '250px', margin: '20px 20px', borderRadius: '10px', padding: '40px', boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)' }}>
       <h3 style={{ textAlign: 'left', fontSize: '15px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         繪本名稱
         <span style={{ fontSize: '20px', marginRight: '12px' }}>📖</span>
