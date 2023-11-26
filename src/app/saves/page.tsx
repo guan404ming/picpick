@@ -35,7 +35,7 @@ export default function SavesPage() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '5%' ,paddingTop:'3%'}}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', margin: '3% 5%' }}>
       <h1 style={{ fontSize: '33px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px' }}>Saves</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px' }}>
         {books.map((book) => (
