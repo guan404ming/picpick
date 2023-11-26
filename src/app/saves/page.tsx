@@ -35,9 +35,9 @@ export default function SavesPage() {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '3%' }}>
-      <h1 style={{ fontSize: '33px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px', marginLeft: '5%' }}>Saves</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px', marginLeft: '5%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', paddingLeft: '5%', paddingTop: '3%' }}>
+      <h1 style={{ fontSize: '33px', fontWeight: 'bold', textAlign: 'left', marginBottom: '20px' }}>Saves</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around', gap: '20px' }}>
         {books.map((book) => (
           <div key={book.id} style={{ flex: '0 0 calc(33.33% - 40px)', marginRight: '20px' }}>
             <Card book={book} />
