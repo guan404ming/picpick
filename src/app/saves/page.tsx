@@ -18,7 +18,7 @@ function Card({ book }: CardProps) {
         <span style={{ fontSize: '20px', marginRight: '12px' }}>📖</span>
       </h3>
       <img src={book.image} alt={book.title} style={{ width: '100%', borderRadius: '8px', marginBottom: '20px', height: '150px' }} />
-      <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 40%, #ccc 60%)', borderRadius: '16px' }} />
+      <div style={{ width: '100%', height: '5px', background: 'linear-gradient(to right, black 50%, #ccc 50%)', borderRadius: '8px' }} />
     </div>
   );
 }
@@ -31,7 +31,6 @@ export default function SavesPage() {
     { id: 4, title: 'Book 4', image: 'book1.jpg' },
     { id: 5, title: 'Book 5', image: 'book1.jpg' },
     { id: 6, title: 'Book 6', image: 'book1.jpg' },
-    // ... 其他書籍資料
   ];
 
   return (
