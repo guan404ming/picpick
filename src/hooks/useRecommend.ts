@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { publicEnv } from "@/lib/env/public";
+import { privateEnv } from "@/lib/env/private";
 
 export default function useRecommend() {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ export default function useRecommend() {
 
     setLoading(true);
 
-    const res = await fetch(`${publicEnv.NEXT_PUBLIC_MODEL_BASE_URL}/questions`);
+    const res = await fetch(`${privateEnv.MODEL_BASE_URL}/questions`);
 
     console.log(res);
 
