@@ -1,29 +1,34 @@
 import { useState } from "react";
 
-import { privateEnv } from "@/lib/env/private";
+import { publicEnv } from "@/lib/env/public";
 
 export default function useRecommend() {
   const [loading, setLoading] = useState(false);
 
-  const getQuestion = async () => {
+  const getBook = async () => {
     if (loading) return;
 
     setLoading(true);
 
-    const res = await fetch(`${privateEnv.MODEL_BASE_URL}/questions`);
-
-    console.log(res);
+    const res = await fetch(
+      `${publicEnv.NEXT_PUBLIC_MODEL_BASE_URL}/predictions/dpr`,
+    );
 
     if (!res.ok) {
-      const body = await res.json();
-      throw new Error(body.error);
+      return;
     }
 
+    const body: {
+      id: string;
+    } = await res.json();
+
     setLoading(false);
+
+    return body;
   };
 
   return {
-    getQuestion,
+    getBook,
     loading,
   };
 }
