@@ -54,8 +54,8 @@ export default function ProfileDialog() {
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Welcome to Picbook Home!</DialogTitle>
-          <DialogDescription>Sign in to get all Picbooks~~</DialogDescription>
+          <DialogTitle>Welcome to PicPick!</DialogTitle>
+          <DialogDescription>Sign in to pick all Picbooks~~</DialogDescription>
         </DialogHeader>
 
         {session && <SettingForm></SettingForm>}

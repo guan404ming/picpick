@@ -1,1 +1,1 @@
-# Picbook Project
+# PicPick
