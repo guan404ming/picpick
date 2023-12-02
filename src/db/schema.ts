@@ -30,7 +30,7 @@ export const bookTable = pgTable(
     pdfLink: varchar("pdf_link", { length: 512 }),
     epubLink: varchar("epub_link", { length: 512 }).notNull(),
     author: varchar("author", { length: 256 }),
-    publishDate: timestamp("publish_date", { mode:"date" }),
+    publishDate: varchar("publish_date", { length: 256 }),
   }
 );
 
