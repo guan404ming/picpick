@@ -17,7 +17,7 @@ export default function Message({ chat }: MessageProps) {
   return (
     <div
       className={cn(
-        "flex items-top space-x-1.5",
+        "items-top flex space-x-1.5",
         chat.from === "me" ? "flex-row-reverse" : "flex-row",
         chat.from,
       )}
@@ -30,7 +30,7 @@ export default function Message({ chat }: MessageProps) {
       )}
       <div
         className={cn(
-          "max-w-[60%] space-x-2 space-y-2 rounded-2xl p-4 flex flex-col justify-center",
+          "flex max-w-[60%] flex-col justify-center space-x-2 space-y-2 rounded-2xl p-4",
           chat.from === "me"
             ? "bg-black text-white"
             : "bg-[#88888840] text-black",
