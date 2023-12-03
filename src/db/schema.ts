@@ -10,14 +10,14 @@ export const userTable = pgTable(
   (table) => ({
     emailIndex: index("email_index").on(table.email),
   }),
-);
+); 
 
 export const favourites = pgTable(
   "FAVOURITES",
   {
     id: serial("id").primaryKey(),
-    userId: integer("user_id").references(() => userTable.id),
-    bookId: integer("book_id").references(() => bookTable.bookId),
+    userId: integer("user_id").references(() => userTable.id, { onDelete: "cascade" }),
+    bookId: varchar("book_id").references(() => bookTable.bookId, { onDelete: "cascade" }),
     createdAt: timestamp("created_at", { mode:"date" }).defaultNow(),
   },
 );
@@ -38,8 +38,20 @@ export const messageTable = pgTable(
   "MESSAGE",
   {
     id: serial("id").primaryKey(),
-    userId: integer("user_id").references(() => userTable.id),
+    userId: integer("user_id").references(() => userTable.id, { onDelete: "cascade" }),
     content: varchar("content", { length: 512 }).notNull(),
     createdAt: timestamp("created_at", { mode:"date" }).defaultNow(),
   }
 );
+
+export const questionTable = pgTable(
+  "QUESTION",
+  {
+    id: serial("id").primaryKey(),
+    question: varchar("question", { length: 256 }),
+    option1: varchar("option_1", { length: 256 }),
+    option2: varchar("option_2", { length: 256 }),
+    option3: varchar("option_3", { length: 256 }),
+    option4: varchar("option_4", { length: 256 }),
+  }
+)
