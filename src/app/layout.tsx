@@ -35,7 +35,7 @@ export default function RootLayout({
               enableSystem
             >
               <Sider />
-              <main className="flex min-h-screen w-full">{children}</main>
+              <main className="flex max-h-screen w-full overflow-y-scroll">{children}</main>
             </NextThemeProvider>
           </div>
         </body>

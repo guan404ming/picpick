@@ -28,7 +28,7 @@ export default function ChatPage() {
   const date = "Today, 12/01";
 
   return (
-    <div className="flex max-h-screen w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
+    <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
       <div className="w-2/3 overflow-y-auto rounded-xl bg-white shadow-md">
         <div className="flex w-full items-center justify-start px-8 py-3 shadow">
           <span className="chatbot-icon">ICON</span>
