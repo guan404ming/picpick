@@ -1,108 +1,49 @@
-import React from 'react';
-import './chatDesign.css'; // Make sure the path is correct
-import { randomFill } from 'crypto';
+import Message from "./_components/Message";
+
+const chats: {
+  text: string;
+  from: "me" | "other";
+  options?: string[];
+}[] = [
+  {
+    text: "here's the picture book of the day:",
+    from: "other",
+    options: ["Read", "More"],
+  },
+  { text: "Option1", from: "me" },
+  {
+    text: "Here's the first question:",
+    from: "other",
+    options: ["option1", "option2", "option3"],
+  },
+  { text: "Yes", from: "me" },
+  {
+    text: "Hello, {username}. I'm Abby. Nice to meet you. Are you ready to get started?",
+    from: "other",
+    options: ["Yes"],
+  },
+];
 
 export default function ChatPage() {
-  const username = "Annie"; // This will be the placeholder for the dynamic username
   const date = "Today, 12/01";
-  const question = "QuestionQuestionQuestionQuestionQuestionQuestionQuestion";
 
   return (
-    <div className="chat-page">
-        <div className="chat-header">
+    <div className="flex max-h-screen w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
+      <div className="w-2/3 overflow-y-auto rounded-xl bg-white shadow-md">
+        <div className="flex w-full items-center justify-start px-8 py-3 shadow">
           <span className="chatbot-icon">ICON</span>
-          <span className="chatbot-name">品牌或機器人名字</span>
-        </div>
-      <div className="chat-box">
-        <div className="date">
-          <span className="chat-date">{date}</span>
+          <span className="p-4 text-xl">PicPick</span>
         </div>
 
-        <div className="chat-message bot-message">
-          <div className="constant-message">
-            "Hello, {username}. I'm Abby. Nice to meet you. Are you ready to get started?
-          </div>
-          <div className="chat-options">
-            <button className="chat-option-button">Yes</button>
-          </div>
-        </div>
+        <div className="p-8">
+          <p className="mx-[auto] mb-8 max-w-[100px] rounded-full bg-gray-200 px-2.5 py-1 text-center text-xs">
+            {date}
+          </p>
 
-        <div className="chat-message user-message">
-          <span className="message-content">Yes</span>
-        </div>
-
-        <div className="chat-message bot-message">
-          <div className="constant-message">
-            Here's the first question: 
-          </div>
-          <div className="random-question">
-            {question}
-          </div>
-          <div className="chat-options">
-              <button className="chat-option-button">option1</button>
-              <button className="chat-option-button">option2</button>
-              <button className="chat-option-button">option3</button>
-          </div>
-        </div>
-
-        <div className="chat-message user-message">
-          <span className="message-content">Option1</span>
-        </div>
-
-        <div className="chat-message bot-message">
-          <div className="constant-message">
-            Here's the first question: 
-          </div>
-          <div className="random-question">
-            {question}
-          </div>
-          <div className="chat-options">
-              <button className="chat-option-button">option1</button>
-              <button className="chat-option-button">option2</button>
-              <button className="chat-option-button">option3</button>
-          </div>
-        </div>
-
-        <div className="chat-message user-message">
-          <span className="message-content">Option2</span>
-        </div>
-
-        <div className="chat-message bot-message">
-          <div className="constant-message">
-            Here's the first question: 
-          </div>
-          <div className="random-question">
-            {question}
-          </div>
-          <div className="chat-options">
-              <button className="chat-option-button">option1</button>
-              <button className="chat-option-button">option2</button>
-              <button className="chat-option-button">option3</button>
-          </div>
-        </div>
-
-        <div className="chat-message user-message">
-          <span className="message-content">Option1</span>
-        </div>
-
-        {/* /* At the end of the chat */}
-        <div className="chat-message bot-message">
-          <div className="constant-message">
-            Dear {username},
-          </div>
-          <div className="constant-message">
-            here's the picture book of the day: {/* Put your dynamic book name here */}
-          </div>
-          <div className="chat-book-display">
-            {/* Placeholder for book image */}
-            <div className="chat-book-image"></div>
-          </div>
-          <div className="constant-message">
-            Title:{/* Title of the book */}
-          </div>
-          <div className="chat-options-for-recommendation">
-            <button className="chat-option-button">Read</button>
-            <button className="chat-option-button">More</button>
+          <div className="flex grow flex-col-reverse space-y-1 overflow-y-auto">
+            {chats.map((chat, idx) => (
+              <Message chat={chat} key={idx}></Message>
+            ))}
           </div>
         </div>
       </div>

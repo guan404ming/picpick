@@ -19,7 +19,7 @@ export default function Sider() {
       <div className="flex flex-col gap-2">
         <div className="mb-2 p-2">
           <Link href="/">
-            <Image src={picPick} alt="quiztory" width={40} height={40} />
+            <Image src={picPick} alt="pic-pick" width={40} height={40} />
           </Link>
         </div>
         <SiderButton Icon={Home} text="Home" router="/" />
