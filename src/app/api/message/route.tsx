@@ -5,26 +5,26 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { db } from "@/db";
-import { favourites, userTable } from "@/db/schema";
+import { messageTable, userTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
-const addFavoriteRequestSchema = z.object({
-    bookId: z.string(),
+const addMessageRequestSchema = z.object({
+    content: z.string(),
 });
 
-type addFavoriteRequest = z.infer<typeof addFavoriteRequestSchema>;
+type addMessageRequest = z.infer<typeof addMessageRequestSchema>;
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
   console.log(data);
 
   try {
-    addFavoriteRequestSchema.parse(data);
+    addMessageRequestSchema.parse(data);
   } catch (error) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const { bookId } = data as addFavoriteRequest;
+  const { content } = data as addMessageRequest;
 
   try {
     const session = await getServerSession(authOptions);
@@ -38,10 +38,10 @@ export async function POST(request: NextRequest) {
       .where(eq(userTable.email, session.user.email));
 
     await db
-      .insert(favourites)
+      .insert(messageTable)
       .values({
         userId: user.id,
-        bookId: bookId,
+        content: content,
 })
       .onConflictDoNothing()
       .execute();
