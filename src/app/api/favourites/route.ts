@@ -9,7 +9,7 @@ import { favouritesTable, userTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 const addFavoriteRequestSchema = z.object({
-    bookId: z.string(),
+  bookId: z.string(),
 });
 
 type addFavoriteRequest = z.infer<typeof addFavoriteRequestSchema>;
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       .onConflictDoNothing()
       .execute();
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 },
@@ -55,14 +55,10 @@ export async function POST(request: NextRequest) {
   return new NextResponse("OK", { status: 200 });
 }
 
-export async function DELETE(
-  request: NextRequest
-) {
+export async function DELETE(request: NextRequest) {
   try {
     const { favouriteId } = await request.json();
-    await db
-      .delete(favouritesTable)
-      .where(eq(favouritesTable.id, favouriteId))
+    await db.delete(favouritesTable).where(eq(favouritesTable.id, favouriteId));
   } catch (error) {
     console.log(error);
     return NextResponse.json(
@@ -74,28 +70,26 @@ export async function DELETE(
   return new NextResponse("OK", { status: 200 });
 }
 
-export async function PATCH(
-  request: NextRequest
-) {
+export async function PATCH(request: NextRequest) {
   try {
     const { favouriteId, bookmark } = await request.json();
-    console.log(`favouriteId: ${favouriteId}, bookmark: ${bookmark}`)
-    if(!favouriteId)
+    console.log(`favouriteId: ${favouriteId}, bookmark: ${bookmark}`);
+    if (!favouriteId)
       return NextResponse.json(
-        { error: 'favouriteId cannot be null'},
-        { status: 404 }
-      )
+        { error: "favouriteId cannot be null" },
+        { status: 404 },
+      );
 
-    if(!bookmark)
+    if (!bookmark)
       return NextResponse.json(
-        { error: 'bookmark cannot be null'},
-        { status: 404 }
-      )
+        { error: "bookmark cannot be null" },
+        { status: 404 },
+      );
 
-    await db.update(favouritesTable)
+    await db
+      .update(favouritesTable)
       .set({ bookmark: bookmark })
       .where(eq(favouritesTable.id, favouriteId));
-
   } catch (error) {
     console.log(error);
     return NextResponse.json(

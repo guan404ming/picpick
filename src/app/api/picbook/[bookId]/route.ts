@@ -1,15 +1,16 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { db } from "@/db";
-import { eq } from "drizzle-orm";
-import { bookTable } from "@/db/schema";
-import { NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export async function GET( 
-  req: NextApiRequest, 
-  { params }: { params: { bookId: string } }
+import { eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { bookTable } from "@/db/schema";
+
+export async function GET(
+  req: NextApiRequest,
+  { params }: { params: { bookId: string } },
 ) {
-    
-  const bookId = params.bookId
+  const bookId = params.bookId;
 
   try {
     const result = await db
@@ -19,9 +20,9 @@ export async function GET(
 
     if (result.length === 0) {
       return NextResponse.json(
-        { error: `cannot find book id "${bookId}"`},
-        { status: 404 }
-      )
+        { error: `cannot find book id "${bookId}"` },
+        { status: 404 },
+      );
     }
     return NextResponse.json(result[0]);
   } catch (error) {

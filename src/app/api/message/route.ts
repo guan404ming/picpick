@@ -9,8 +9,8 @@ import { messageTable, userTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 const addMessageRequestSchema = z.object({
-    content: z.string(),
-    sender: z.string()
+  content: z.string(),
+  sender: z.string(),
 });
 
 type addMessageRequest = z.infer<typeof addMessageRequestSchema>;
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
       .values({
         userId: user.id,
         content: content,
-        sender: sender
+        sender: sender,
       })
       .onConflictDoNothing()
       .execute();

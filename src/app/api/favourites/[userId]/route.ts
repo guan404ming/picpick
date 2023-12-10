@@ -1,20 +1,22 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { db } from "@/db";
+import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
+
 import { eq } from "drizzle-orm";
-import { favouritesTable } from '@/db/schema';
-import { NextResponse } from 'next/server';
+
+import { db } from "@/db";
+import { favouritesTable } from "@/db/schema";
 
 export async function GET(
-  req: NextApiRequest, 
-  { params }: { params: { userId: string } }
+  req: NextApiRequest,
+  { params }: { params: { userId: string } },
 ) {
   const userId = parseInt(params.userId as string, 10);
 
-  if(!userId) {
+  if (!userId) {
     return NextResponse.json(
-      { error: 'user id cannot be null'},
-      { status: 404 }
-    )
+      { error: "user id cannot be null" },
+      { status: 404 },
+    );
   }
 
   try {
@@ -31,4 +33,3 @@ export async function GET(
     );
   }
 }
-
