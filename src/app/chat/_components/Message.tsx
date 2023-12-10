@@ -19,10 +19,16 @@ type MessageProps = {
     options: string[];
   };
   setCount: Dispatch<SetStateAction<number>>;
+  setAnswerList: Dispatch<SetStateAction<string[]>>;
   count: number;
 };
 
-export default function Message({ chat, setCount, count }: MessageProps) {
+export default function Message({
+  chat,
+  setCount,
+  count,
+  setAnswerList,
+}: MessageProps) {
   const { handleGetQuestion, handlePostAnswer } = useChat();
 
   const isSystemMessage = chat.sender === "system";
@@ -72,8 +78,9 @@ export default function Message({ chat, setCount, count }: MessageProps) {
                       key={idx}
                       onClick={async (e) => {
                         e.preventDefault();
-                        setCount((prev) => prev + 1);
                         await handlePostAnswer({ answer: `Option ${idx + 1}` });
+                        setCount((prev) => prev + 1);
+                        setAnswerList((prev) => [...prev, chat.options[idx]]);
                         if (count + 1 < 3) await handleGetQuestion();
                       }}
                     >

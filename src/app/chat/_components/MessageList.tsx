@@ -22,6 +22,7 @@ type MessageProps = {
 
 export default function MessageList({ messageList }: MessageProps) {
   const [count, setCount] = useState(0);
+  const [answerList, setAnswerList] = useState<string[]>([]);
   const router = useRouter();
   const { postMessage } = useChat();
 
@@ -29,7 +30,7 @@ export default function MessageList({ messageList }: MessageProps) {
     (async () => {
       if (count === 3) {
         await postMessage({
-          content: "END",
+          content: answerList.join("\n"),
           sender: "system",
           questionId: null,
         });
@@ -37,13 +38,14 @@ export default function MessageList({ messageList }: MessageProps) {
         setCount(0);
       }
     })();
-  }, [count, postMessage, router]);
+  }, [answerList, count, postMessage, router]);
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
       {count}
       {messageList.length === 0 && (
         <Message
+          setAnswerList={setAnswerList}
           count={count}
           setCount={setCount}
           chat={{
@@ -60,6 +62,7 @@ export default function MessageList({ messageList }: MessageProps) {
       {messageList.map((chat, idx) => (
         <Message
           count={count}
+          setAnswerList={setAnswerList}
           setCount={setCount}
           chat={chat}
           key={idx}

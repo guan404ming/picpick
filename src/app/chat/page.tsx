@@ -33,6 +33,7 @@ export default async function ChatPage() {
     .from(messageTable)
     .leftJoin(questionTable, eq(messageTable.questionId, questionTable.id))
     .where(eq(messageTable.userId, session.user.id))
+    .limit(10)
     .orderBy(desc(messageTable.createdAt));
 
   const transformedMessageData: Array<{
