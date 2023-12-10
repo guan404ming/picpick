@@ -55,7 +55,7 @@ export default async function ChatPage() {
       message.option2,
       message.option3,
       message.option4,
-    ].map((option) => option as string), // Ensure non-null options are treated as strings
+    ].map((option) => option as string),
   }));
 
   return (

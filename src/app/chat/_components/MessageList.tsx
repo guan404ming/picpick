@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import { useRouter } from "next/navigation";
+
 import useChat from "@/hooks/useChat";
 
 import Message from "./Message";
@@ -20,20 +22,48 @@ type MessageProps = {
 
 export default function MessageList({ messageList }: MessageProps) {
   const [count, setCount] = useState(0);
+  const router = useRouter();
   const { postMessage } = useChat();
 
   useEffect(() => {
-    if (count === 3) {
-      postMessage({ content: "END", sender: "system", questionId: null });
-      setCount(0);
-    }
-  }, [count, postMessage]);
+    (async () => {
+      if (count === 3) {
+        await postMessage({
+          content: "END",
+          sender: "system",
+          questionId: null,
+        });
+        router.refresh();
+        setCount(0);
+      }
+    })();
+  }, [count, postMessage, router]);
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
       {count}
+      {messageList.length === 0 && (
+        <Message
+          count={count}
+          setCount={setCount}
+          chat={{
+            id: 0,
+            userId: 1,
+            content: "Hello, let's chat!",
+            sender: "system",
+            createdAt: new Date(),
+            questionId: 1,
+            options: ["GO"],
+          }}
+        ></Message>
+      )}
       {messageList.map((chat, idx) => (
-        <Message setCount={setCount} chat={chat} key={idx}></Message>
+        <Message
+          count={count}
+          setCount={setCount}
+          chat={chat}
+          key={idx}
+        ></Message>
       ))}
     </div>
   );

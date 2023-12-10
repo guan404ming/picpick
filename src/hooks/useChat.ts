@@ -55,7 +55,22 @@ export default function useChat() {
     setLoading(false);
   };
 
-  const handleGenerateQuestion = async ({ answer }: { answer: string }) => {
+  const handlePostAnswer = async ({ answer }: { answer: string }) => {
+    if (loading) return;
+
+    setLoading(true);
+
+    await postMessage({
+      content: answer,
+      sender: "user",
+      questionId: null,
+    });
+    router.refresh();
+
+    setLoading(false);
+  };
+
+  const handleGetQuestion = async () => {
     if (loading) return;
 
     setLoading(true);
@@ -67,12 +82,6 @@ export default function useChat() {
     }
 
     const body: { question: string; id: number } = await res.json();
-    await postMessage({
-      content: answer,
-      sender: "user",
-      questionId: null,
-    });
-    router.refresh();
 
     await postMessage({
       content: body.question,
@@ -89,7 +98,8 @@ export default function useChat() {
   return {
     getBook,
     postMessage,
-    handleGenerateQuestion,
+    handlePostAnswer,
+    handleGetQuestion,
     loading,
   };
 }

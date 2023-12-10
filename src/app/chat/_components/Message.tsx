@@ -19,10 +19,11 @@ type MessageProps = {
     options: string[];
   };
   setCount: Dispatch<SetStateAction<number>>;
+  count: number;
 };
 
-export default function Message({ chat, setCount }: MessageProps) {
-  const { handleGenerateQuestion } = useChat();
+export default function Message({ chat, setCount, count }: MessageProps) {
+  const { handleGetQuestion, handlePostAnswer } = useChat();
 
   const isSystemMessage = chat.sender === "system";
   const containerClasses = cn(
@@ -72,9 +73,8 @@ export default function Message({ chat, setCount }: MessageProps) {
                       onClick={async (e) => {
                         e.preventDefault();
                         setCount((prev) => prev + 1);
-                        await handleGenerateQuestion({
-                          answer: `Option ${idx + 1}`,
-                        });
+                        await handlePostAnswer({ answer: `Option ${idx + 1}` });
+                        if (count + 1 < 3) await handleGetQuestion();
                       }}
                     >
                       Option {idx + 1}
