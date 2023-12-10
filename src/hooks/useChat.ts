@@ -8,13 +8,17 @@ export default function useChat() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const getBook = async () => {
+  const getBook = async ({ answer }: { answer: string }) => {
     if (loading) return;
 
     setLoading(true);
 
     const res = await fetch(
       `${publicEnv.NEXT_PUBLIC_MODEL_BASE_URL}/predictions/dpr`,
+      {
+        method: "POST",
+        body: answer,
+      },
     );
 
     if (!res.ok) {

@@ -10,7 +10,7 @@ export default function TestPage() {
   const [bookId, setBookId] = useState<string>("");
 
   async function handleGetBook() {
-    const book = await getBook();
+    const book = await getBook({ answer: "I need book" });
     setBookId(`${book?.id}`);
   }
 
