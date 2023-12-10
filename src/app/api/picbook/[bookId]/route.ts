@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { useParams } from "next/navigation";
 import { NextResponse } from "next/server";
 
 import { eq } from "drizzle-orm";
@@ -6,11 +6,9 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { bookTable } from "@/db/schema";
 
-export async function GET(
-  req: NextApiRequest,
-  { params }: { params: { bookId: string } },
-) {
-  const bookId = params.bookId;
+export async function GET() {
+  const { bookId: bookId_ } = useParams();
+  const bookId = Array.isArray(bookId_) ? bookId_[0] : bookId_;
 
   try {
     const result = await db

@@ -1,9 +1,9 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 
 import { db } from "@/db";
-import { bookTable, questionTable } from "@/db/schema";
+import { questionTable } from "@/db/schema";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const questions = await db.select().from(questionTable);
     const randomIndex = Math.floor(Math.random() * questions.length);

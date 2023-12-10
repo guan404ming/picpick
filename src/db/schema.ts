@@ -2,7 +2,6 @@ import {
   index,
   pgTable,
   serial,
-  boolean,
   varchar,
   timestamp,
   integer,

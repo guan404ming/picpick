@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { useParams } from "next/navigation";
 import { NextResponse } from "next/server";
 
 import { eq } from "drizzle-orm";
@@ -6,11 +6,8 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { messageTable } from "@/db/schema";
 
-export async function GET(
-  req: NextApiRequest,
-  { params }: { params: { userId: string } },
-) {
-  const userId = parseInt(params.userId as string, 10);
+export async function GET() {
+  const { userId } = useParams();
 
   if (!userId) {
     return NextResponse.json(
@@ -23,7 +20,7 @@ export async function GET(
     const messages = await db
       .select()
       .from(messageTable)
-      .where(eq(messageTable.userId, userId));
+      .where(eq(messageTable.userId, parseInt(userId as string)));
     return NextResponse.json(messages);
   } catch (error) {
     console.log(error);
