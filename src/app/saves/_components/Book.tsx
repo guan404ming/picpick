@@ -20,9 +20,10 @@ import { Progress } from "@/components/ui/progress";
 
 type BookProps = {
   book: {
-    id: number;
-    title: string;
-    image: string;
+    bookName: string | null;
+    author: string | null;
+    publishDate: string | null;
+    topics: string | null;
   };
 };
 
@@ -40,8 +41,8 @@ export default function Book({ book }: BookProps) {
     <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
       <Card className="w-[300px] text-center drop-shadow">
         <CardHeader>
-          <CardTitle className="mb-2 flex justify-between">
-            {book.title}
+          <CardTitle className="text-md mb-2 flex justify-between">
+            <p className="max-w-[200px] truncate">{book.bookName}</p>
             <Bookmark className="cursor-pointer" />
           </CardTitle>
         </CardHeader>
@@ -67,18 +68,24 @@ export default function Book({ book }: BookProps) {
       </Card>
 
       <DialogContent className="flex min-w-[800px] justify-between space-x-10 p-12">
-        <div className="w-full">
+        <div className="w-full space-y-5">
           <div className="mb-2 flex justify-between font-bold">
-            {book.title}
+            <p className="max-w-[300px]">{book.bookName}</p>
             <Bookmark className="cursor-pointer" />
           </div>
-          <div className="flex flex-col space-y-2">
-            <p>By: </p>
-            <p>Topics:</p>
-            <p>Publish Date: </p>
-            <p>
-              繪本簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介簡介
-            </p>
+          <div className="flex flex-col space-y-3">
+            <div className="grid w-5/6 grid-cols-2">
+              <span className="mr-5 font-bold">By:</span>
+              <span>{book.author}</span>
+            </div>
+            <div className="grid w-5/6 grid-cols-2">
+              <span className="mr-5 font-bold">Topics: </span>
+              <span>{book.topics}</span>
+            </div>
+            <div className="grid w-5/6 grid-cols-2">
+              <span className="mr-5 font-bold">Publish Date:</span>
+              <span>{book.publishDate}</span>
+            </div>
           </div>
         </div>
 

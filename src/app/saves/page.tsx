@@ -1,20 +1,31 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+
+import { eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { bookTable, favouritesTable } from "@/db/schema";
+import { authOptions } from "@/lib/auth/auth";
+
 import Book from "./_components/Book";
 
-export default function SavesPage() {
-  const books = [
-    { id: 1, title: "Book 1", image: "book1.jpg" },
-    { id: 2, title: "Book 2", image: "book1.jpg" },
-    { id: 3, title: "Book 3", image: "book1.jpg" },
-    { id: 4, title: "Book 4", image: "book1.jpg" },
-    { id: 5, title: "Book 5", image: "book1.jpg" },
-    { id: 6, title: "Book 6", image: "book1.jpg" },
-    { id: 1, title: "Book 1", image: "book1.jpg" },
-    { id: 2, title: "Book 2", image: "book1.jpg" },
-    { id: 3, title: "Book 3", image: "book1.jpg" },
-    { id: 4, title: "Book 4", image: "book1.jpg" },
-    { id: 5, title: "Book 5", image: "book1.jpg" },
-    { id: 6, title: "Book 6", image: "book1.jpg" },
-  ];
+export default async function SavesPage() {
+  const session = await getServerSession(authOptions);
+  if (!session?.user.id) {
+    redirect("/");
+  }
+
+  const books = await db
+    .select({
+      bookName: bookTable.bookName,
+      author: bookTable.author,
+      publishDate: bookTable.publishDate,
+      topics: bookTable.topics,
+    })
+    .from(favouritesTable)
+    .leftJoin(bookTable, eq(favouritesTable.bookId, bookTable.id))
+    .where(eq(favouritesTable.userId, session.user.id))
+    .execute();
 
   return (
     <div className="block w-full overflow-scroll p-8">
