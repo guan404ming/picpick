@@ -1,31 +1,7 @@
-import { getServerSession } from "next-auth";
-
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { db } from "@/db";
-import { userTable } from "@/db/schema";
-import { authOptions } from "@/lib/auth/auth";
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
-
-  if (session?.user) {
-    await db
-      .insert(userTable)
-      .values({
-        name: session.user.name as string,
-        email: session.user.email as string,
-      })
-
-      .onConflictDoUpdate({
-        target: userTable.email,
-        set: {
-          name: session.user.name as string,
-        },
-      })
-      .execute();
-  }
-
   return (
     <div className="w-full p-6">
       <div className="grid grid-cols-1 gap-7 rounded-lg bg-[#F0F0F0] p-10 text-center drop-shadow dark:bg-slate-800">
