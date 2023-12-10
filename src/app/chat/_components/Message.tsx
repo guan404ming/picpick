@@ -1,50 +1,89 @@
 "use client";
 
-import type { Chat } from "../../../../types/db";
+import type { Dispatch, SetStateAction } from "react";
 
 import picPick from "@/assets/pic-pick.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import useChat from "@/hooks/useChat";
 import { cn } from "@/lib/utils";
 
 type MessageProps = {
-  chat: Chat;
+  chat: {
+    id: number;
+    userId: number;
+    content: string;
+    sender: "system" | "user";
+    createdAt: Date;
+    questionId: number | null;
+    options: string[];
+  };
+  setCount: Dispatch<SetStateAction<number>>;
 };
 
-export default function Message({ chat }: MessageProps) {
+export default function Message({ chat, setCount }: MessageProps) {
+  const { handleGenerateQuestion } = useChat();
+
+  const isSystemMessage = chat.sender === "system";
+  const containerClasses = cn(
+    "items-top flex space-x-1.5",
+    chat.sender === "user" ? "flex-row-reverse" : "flex-row",
+    chat.sender,
+  );
+
   return (
-    <div
-      className={cn(
-        "items-top flex space-x-1.5",
-        chat.sender === "user" ? "flex-row-reverse" : "flex-row",
-        chat.sender,
-      )}
-    >
-      {chat.sender === "system" && (
+    <div className={containerClasses}>
+      {isSystemMessage && (
         <Avatar className="mr-2 mt-2 h-6 w-6 [.other:has(+.other)>&]:opacity-0">
-          <AvatarImage src={picPick.src} alt={"pic-pick"} />
+          <AvatarImage src={picPick.src} alt="pic-pick" />
           <AvatarFallback />
         </Avatar>
       )}
+
       <div
         className={cn(
-          "flex max-w-[60%] flex-col justify-center space-x-2 space-y-2 rounded-2xl p-4",
+          "my-2 flex flex-col justify-center space-x-2 space-y-2 rounded-xl p-4",
           chat.sender === "user"
             ? "bg-black text-white"
             : "bg-[#88888840] text-black",
-          "[.me+.me>&]:rounded-br-[0.2rem]",
-          "[.me:has(+.me)>&]:rounded-tr-[0.2rem]",
-          "[.other+.other>&]:rounded-bl-[0.2rem]",
-          "[.other:has(+.other)>&]:rounded-tl-[0.2rem]",
         )}
       >
         <p className="text-sm">{chat.content}</p>
-        {/* {chat.options &&
-          chat.options.map((option, idx) => (
-            <Button className="block" size={"lg"} key={idx}>
-              {option}
-            </Button>
-          ))} */}
+        {chat.questionId && (
+          <>
+            <div className="max-w-1/4 flex flex-col text-sm">
+              {chat.options?.map(
+                (option, idx) =>
+                  option && (
+                    <p key={idx}>
+                      {idx + 1}. {option}
+                    </p>
+                  ),
+              )}
+            </div>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {chat.options?.map(
+                (option, idx) =>
+                  option && (
+                    <Button
+                      className="block"
+                      size="lg"
+                      key={idx}
+                      onClick={async (e) => {
+                        e.preventDefault();
+                        setCount((prev) => prev + 1);
+                        await handleGenerateQuestion({
+                          answer: `Option ${idx + 1}`,
+                        });
+                      }}
+                    >
+                      Option {idx + 1}
+                    </Button>
+                  ),
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

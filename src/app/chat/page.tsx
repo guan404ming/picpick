@@ -4,10 +4,10 @@ import { redirect } from "next/navigation";
 import { desc, eq } from "drizzle-orm";
 
 import { db } from "@/db";
-import { messageTable } from "@/db/schema";
+import { messageTable, questionTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
-import Message from "./_components/Message";
+import MessageList from "./_components/MessageList";
 
 export default async function ChatPage() {
   const date = "Today, 12/01";
@@ -18,10 +18,45 @@ export default async function ChatPage() {
   }
 
   const messageData = await db
-    .select()
+    .select({
+      id: messageTable.id,
+      userId: messageTable.userId,
+      content: messageTable.content,
+      sender: messageTable.sender,
+      createdAt: messageTable.createdAt,
+      questionId: messageTable.questionId,
+      option1: questionTable.option1,
+      option2: questionTable.option2,
+      option3: questionTable.option3,
+      option4: questionTable.option4,
+    })
     .from(messageTable)
+    .leftJoin(questionTable, eq(messageTable.questionId, questionTable.id))
     .where(eq(messageTable.userId, session.user.id))
     .orderBy(desc(messageTable.createdAt));
+
+  const transformedMessageData: Array<{
+    id: number;
+    userId: number;
+    content: string;
+    sender: "system" | "user";
+    createdAt: Date;
+    questionId: number | null;
+    options: string[];
+  }> = messageData.map((message) => ({
+    id: message.id,
+    userId: message.userId,
+    content: message.content,
+    sender: message.sender,
+    createdAt: message.createdAt,
+    questionId: message.questionId,
+    options: [
+      message.option1,
+      message.option2,
+      message.option3,
+      message.option4,
+    ].map((option) => option as string), // Ensure non-null options are treated as strings
+  }));
 
   return (
     <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
@@ -36,11 +71,7 @@ export default async function ChatPage() {
             {date}
           </p>
 
-          <div className="flex grow flex-col-reverse space-y-1 overflow-y-auto">
-            {messageData.map((chat, idx) => (
-              <Message chat={chat} key={idx}></Message>
-            ))}
-          </div>
+          <MessageList messageList={transformedMessageData}></MessageList>
         </div>
       </div>
     </div>

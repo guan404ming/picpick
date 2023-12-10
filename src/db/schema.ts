@@ -48,6 +48,10 @@ export const bookTable = pgTable("PICBOOK", {
 
 export const messageTable = pgTable("MESSAGE", {
   id: serial("id").primaryKey(),
+  questionId: integer("question_id").references(() => questionTable.id, {
+    onDelete: "cascade",
+    onUpdate: "cascade",
+  }),
   userId: integer("user_id")
     .references(() => userTable.id, {
       onDelete: "cascade",
@@ -61,7 +65,7 @@ export const messageTable = pgTable("MESSAGE", {
 
 export const questionTable = pgTable("QUESTION", {
   id: serial("id").primaryKey(),
-  question: varchar("question", { length: 256 }),
+  question: varchar("question", { length: 256 }).notNull(),
   option1: varchar("option_1", { length: 256 }),
   option2: varchar("option_2", { length: 256 }),
   option3: varchar("option_3", { length: 256 }),

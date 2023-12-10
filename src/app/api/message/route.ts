@@ -10,6 +10,7 @@ import { authOptions } from "@/lib/auth/auth";
 const addMessageRequestSchema = z.object({
   content: z.string(),
   sender: z.enum(["system", "user"]),
+  questionId: z.number().nullable(),
 });
 
 type addMessageRequest = z.infer<typeof addMessageRequestSchema>;
@@ -21,10 +22,11 @@ export async function POST(request: NextRequest) {
   try {
     addMessageRequestSchema.parse(data);
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const { content, sender } = data as addMessageRequest;
+  const { content, sender, questionId } = data as addMessageRequest;
 
   try {
     const session = await getServerSession(authOptions);
@@ -35,7 +37,8 @@ export async function POST(request: NextRequest) {
       .values({
         content: content,
         sender: sender,
-        userId: session.user.id
+        userId: session.user.id,
+        questionId: questionId,
       })
       .onConflictDoNothing()
       .execute();
