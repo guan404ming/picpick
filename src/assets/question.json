@@ -2,410 +2,410 @@
     {
         "id": 1,
         "question": "What is your spirit animal?",
-        "option_1": "Unicorn",
-        "option_2": "Sloth",
-        "option_3": "Ninja Turtle",
-        "option_4": "Grumpy Cat"
+        "option1": "Unicorn",
+        "option2": "Sloth",
+        "option3": "Ninja Turtle",
+        "option4": "Grumpy Cat"
     },
     {
         "id": 2,
         "question": "What is your superpower?",
-        "option_1": "Invisibility when eating snacks",
-        "option_2": "Ability to nap anywhere, anytime",
-        "option_3": "Summoning pizza with a snap of your fingers",
-        "option_4": "Incredible dance moves in awkward situations"
+        "option1": "Invisibility when eating snacks",
+        "option2": "Ability to nap anywhere, anytime",
+        "option3": "Summoning pizza with a snap of your fingers",
+        "option4": "Incredible dance moves in awkward situations"
     },
     {
         "id": 3,
         "question": "How do you handle Monday mornings?",
-        "option_1": "Embrace the chaos with a smile",
-        "option_2": "Denial - it's still Sunday in your mind",
-        "option_3": "Coffee, coffee, and more coffee",
-        "option_4": "Cry softly under your desk"
+        "option1": "Embrace the chaos with a smile",
+        "option2": "Denial - it's still Sunday in your mind",
+        "option3": "Coffee, coffee, and more coffee",
+        "option4": "Cry softly under your desk"
     },
     {
         "id": 4,
         "question": "What's your favorite procrastination technique?",
-        "option_1": "Staring into space",
-        "option_2": "Scrolling through endless cat videos",
-        "option_3": "Randomly organizing your sock drawer",
-        "option_4": "Starting new hobbies you'll never finish"
+        "option1": "Staring into space",
+        "option2": "Scrolling through endless cat videos",
+        "option3": "Randomly organizing your sock drawer",
+        "option4": "Starting new hobbies you'll never finish"
     },
     {
         "id": 5,
         "question": "What's your secret talent?",
-        "option_1": "Juggling marshmallows",
-        "option_2": "Finding the best memes in record time",
-        "option_3": "Balancing a spoon on your nose",
-        "option_4": "Navigating crowded places without spilling your coffee"
+        "option1": "Juggling marshmallows",
+        "option2": "Finding the best memes in record time",
+        "option3": "Balancing a spoon on your nose",
+        "option4": "Navigating crowded places without spilling your coffee"
     },
     {
         "id": 6,
         "question": "How would you describe your fashion sense?",
-        "option_1": "Quirky and unpredictable",
-        "option_2": "Comfy casual all the way",
-        "option_3": "Always one step behind the latest trend",
-        "option_4": "Socks with sandals - a fashion icon"
+        "option1": "Quirky and unpredictable",
+        "option2": "Comfy casual all the way",
+        "option3": "Always one step behind the latest trend",
+        "option4": "Socks with sandals - a fashion icon"
     },
     {
         "id": 7,
         "question": "What's your guilty pleasure snack?",
-        "option_1": "Cheese puffs",
-        "option_2": "Chocolate-covered bacon",
-        "option_3": "Pickle-flavored ice cream",
-        "option_4": "Double-decker peanut butter and jelly sandwich"
+        "option1": "Cheese puffs",
+        "option2": "Chocolate-covered bacon",
+        "option3": "Pickle-flavored ice cream",
+        "option4": "Double-decker peanut butter and jelly sandwich"
     },
     {
         "id": 8,
         "question": "What's your signature catchphrase?",
-        "option_1": "I'm not lazy, I'm on energy-saving mode.",
-        "option_2": "I'm not clumsy, it's just a creative way of moving.",
-        "option_3": "I'm not lost, I'm just taking the scenic route.",
-        "option_4": "I'm not late, I'm fashionably delayed."
+        "option1": "I'm not lazy, I'm on energy-saving mode.",
+        "option2": "I'm not clumsy, it's just a creative way of moving.",
+        "option3": "I'm not lost, I'm just taking the scenic route.",
+        "option4": "I'm not late, I'm fashionably delayed."
     },
     {
         "id": 9,
         "question": "How do you handle embarrassing moments?",
-        "option_1": "Laugh it off and make it even more awkward",
-        "option_2": "Pretend it never happened and suppress the memory",
-        "option_3": "Share the story with everyone you know",
-        "option_4": "Seek immediate relocation to a different country"
+        "option1": "Laugh it off and make it even more awkward",
+        "option2": "Pretend it never happened and suppress the memory",
+        "option3": "Share the story with everyone you know",
+        "option4": "Seek immediate relocation to a different country"
     },
     {
         "id": 10,
         "question": "What's your preferred mode of transportation?",
-        "option_1": "Hoverboard",
-        "option_2": "Magical teleportation",
-        "option_3": "Pogo stick",
-        "option_4": "Piggyback rides from friends"
+        "option1": "Hoverboard",
+        "option2": "Magical teleportation",
+        "option3": "Pogo stick",
+        "option4": "Piggyback rides from friends"
     },
     {
         "id": 11,
         "question": "What's your favorite dad joke?",
-        "option_1": "Why don't scientists trust atoms? Because they make up everything!",
-        "option_2": "I used to play piano by ear, but now I use my hands.",
-        "option_3": "I'm reading a book about anti-gravity. It's impossible to put down!",
-        "option_4": "Why did the scarecrow win an award? Because he was outstanding in his field!"
+        "option1": "Why don't scientists trust atoms? Because they make up everything!",
+        "option2": "I used to play piano by ear, but now I use my hands.",
+        "option3": "I'm reading a book about anti-gravity. It's impossible to put down!",
+        "option4": "Why did the scarecrow win an award? Because he was outstanding in his field!"
     },
     {
         "id": 12,
         "question": "How do you react when you see a spider?",
-        "option_1": "Scream and run in circles",
-        "option_2": "Capture it and release it outside",
-        "option_3": "Ask it to pay rent for invading your personal space",
-        "option_4": "Make it your new roommate and name it Fred"
+        "option1": "Scream and run in circles",
+        "option2": "Capture it and release it outside",
+        "option3": "Ask it to pay rent for invading your personal space",
+        "option4": "Make it your new roommate and name it Fred"
     },
     {
         "id": 13,
         "question": "What's your dream vacation destination?",
-        "option_1": "Candyland",
-        "option_2": "Pillow fort kingdom",
-        "option_3": "Hogwarts School of Witchcraft and Wizardry",
-        "option_4": "The Land of Never-Ending Buffets"
+        "option1": "Candyland",
+        "option2": "Pillow fort kingdom",
+        "option3": "Hogwarts School of Witchcraft and Wizardry",
+        "option4": "The Land of Never-Ending Buffets"
     },
     {
         "id": 14,
         "question": "How do you handle a bad hair day?",
-        "option_1": "Embrace the wild and untamed look",
-        "option_2": "Wear a hat and call it a fashion statement",
-        "option_3": "Hide under a giant umbrella all day",
-        "option_4": "Attempt a DIY haircut and hope for the best"
+        "option1": "Embrace the wild and untamed look",
+        "option2": "Wear a hat and call it a fashion statement",
+        "option3": "Hide under a giant umbrella all day",
+        "option4": "Attempt a DIY haircut and hope for the best"
     },
     {
         "id": 15,
         "question": "What's your favorite way to unwind after a long day?",
-        "option_1": "Taking a bubble bath with rubber ducks",
-        "option_2": "Binge-watching your favorite TV show in pajamas",
-        "option_3": "Attempting complicated yoga poses and falling over",
-        "option_4": "Eating an entire pint of ice cream in one sitting"
+        "option1": "Taking a bubble bath with rubber ducks",
+        "option2": "Binge-watching your favorite TV show in pajamas",
+        "option3": "Attempting complicated yoga poses and falling over",
+        "option4": "Eating an entire pint of ice cream in one sitting"
     },
     {
         "id": 16,
         "question": "What's your secret talent in the kitchen?",
-        "option_1": "Burning water",
-        "option_2": "Creating masterpieces out of leftovers",
-        "option_3": "Making the world's best microwave popcorn",
-        "option_4": "Turning simple recipes into culinary disasters"
+        "option1": "Burning water",
+        "option2": "Creating masterpieces out of leftovers",
+        "option3": "Making the world's best microwave popcorn",
+        "option4": "Turning simple recipes into culinary disasters"
     },
     {
         "id": 17,
         "question": "How would you describe your relationship with technology?",
-        "option_1": "It's a love-hate relationship",
-        "option_2": "We're best friends forever",
-        "option_3": "It's a constant battle of confusion",
-        "option_4": "We tolerate each other for survival"
+        "option1": "It's a love-hate relationship",
+        "option2": "We're best friends forever",
+        "option3": "It's a constant battle of confusion",
+        "option4": "We tolerate each other for survival"
     },  
     {
         "id": 18,
         "question": "How would you describe your relationship with mornings?",
-        "option_1": "Mornings and I are mortal enemies",
-        "option_2": "Mornings are my time to shine",
-        "option_3": "Mornings and I have a complicated love-hate relationship",
-        "option_4": "Mornings? What are those?"
+        "option1": "Mornings and I are mortal enemies",
+        "option2": "Mornings are my time to shine",
+        "option3": "Mornings and I have a complicated love-hate relationship",
+        "option4": "Mornings? What are those?"
     },
     {
         "id": 19,
         "question": "What's your ultimate comfort food?",
-        "option_1": "Mac and cheese",
-        "option_2": "Chicken noodle soup",
-        "option_3": "Chocolate chip cookies",
-        "option_4": "Pizza, pizza, and more pizza"
+        "option1": "Mac and cheese",
+        "option2": "Chicken noodle soup",
+        "option3": "Chocolate chip cookies",
+        "option4": "Pizza, pizza, and more pizza"
     },
     {
         "id": 20,
         "question": "How do you handle spicy food?",
-        "option_1": "Bring on the heat - the spicier, the better",
-        "option_2": "Water, milk, ice cream - anything to cool down the burn",
-        "option_3": "Avoid spicy food like it's the plague",
-        "option_4": "Spicy food? No thanks, I'll pass"
+        "option1": "Bring on the heat - the spicier, the better",
+        "option2": "Water, milk, ice cream - anything to cool down the burn",
+        "option3": "Avoid spicy food like it's the plague",
+        "option4": "Spicy food? No thanks, I'll pass"
     },
     {
         "id": 21,
         "question": "How do you handle stress?",
-        "option_1": "Take a long nap and hope the problem goes away",
-        "option_2": "Sing loudly in the shower",
-        "option_3": "Vent to a trusted friend or family member",
-        "option_4": "Eat your weight in chocolate"
+        "option1": "Take a long nap and hope the problem goes away",
+        "option2": "Sing loudly in the shower",
+        "option3": "Vent to a trusted friend or family member",
+        "option4": "Eat your weight in chocolate"
     },
     {
         "id": 22,
         "question": "What's your spirit beverage?",
-        "option_1": "Coffee - it's the elixir of life",
-        "option_2": "Hot chocolate - sweet and comforting",
-        "option_3": "Energy drinks - always ready to power up",
-        "option_4": "Herbal tea - a calming and soothing choice"
+        "option1": "Coffee - it's the elixir of life",
+        "option2": "Hot chocolate - sweet and comforting",
+        "option3": "Energy drinks - always ready to power up",
+        "option4": "Herbal tea - a calming and soothing choice"
     },
     {
         "id": 23,
         "question": "How would you describe your relationship with exercise?",
-        "option_1": "Exercise? What's that?",
-        "option_2": "I love the idea of exercise, but my couch always wins",
-        "option_3": "Fitness enthusiast - always up for a workout",
-        "option_4": "I exercise by lifting snacks to my mouth"
+        "option1": "Exercise? What's that?",
+        "option2": "I love the idea of exercise, but my couch always wins",
+        "option3": "Fitness enthusiast - always up for a workout",
+        "option4": "I exercise by lifting snacks to my mouth"
     },
     {
         "id": 24,
         "question": "How do you handle technology malfunctions?",
-        "option_1": "Panic and call for technical support immediately",
-        "option_2": "Try turning it off and on again",
-        "option_3": "Bang on it and hope for the best",
-        "option_4": "Swear eternal vengeance upon all technology"
+        "option1": "Panic and call for technical support immediately",
+        "option2": "Try turning it off and on again",
+        "option3": "Bang on it and hope for the best",
+        "option4": "Swear eternal vengeance upon all technology"
     },
     {
         "id": 25,
         "question": "What's your favorite way to unwind on the weekend?",
-        "option_1": "Netflix marathon in pajamas",
-        "option_2": "Exploring the great outdoors",
-        "option_3": "Trying out new recipes in the kitchen",
-        "option_4": "Hibernating until Monday arrives"
+        "option1": "Netflix marathon in pajamas",
+        "option2": "Exploring the great outdoors",
+        "option3": "Trying out new recipes in the kitchen",
+        "option4": "Hibernating until Monday arrives"
     },
     {
         "id": 26,
         "question": "I feel most energetic and focused:",
-        "option_1": "In the morning",
-        "option_2": "During the afternoon",
-        "option_3": "Late at night",
-        "option_4": ""
+        "option1": "In the morning",
+        "option2": "During the afternoon",
+        "option3": "Late at night",
+        "option4": ""
     },
     {
         "id": 27,
         "question": "When I walk, I tend to do it:",
-        "option_1": "Fairly fast, with long steps",
-        "option_2": "Fairly fast, with small steps",
-        "option_3": "Less fast, head up, looking the world in the face",
-        "option_4": "Less fast, head down"
+        "option1": "Fairly fast, with long steps",
+        "option2": "Fairly fast, with small steps",
+        "option3": "Less fast, head up, looking the world in the face",
+        "option4": "Less fast, head down"
     },
     {
         "id": 28,
         "question": "When you speak to people, you tend to:",
-        "option_1": "Stand with your arms folded",
-        "option_2": "Have your hands clasped",
-        "option_3": "Have one or both of your hands on your hips",
-        "option_4": "Touch or push the person to whom you are talking"
+        "option1": "Stand with your arms folded",
+        "option2": "Have your hands clasped",
+        "option3": "Have one or both of your hands on your hips",
+        "option4": "Touch or push the person to whom you are talking"
     },
     {
         "id": 28,
         "question": "When you're relaxed, you usually sit with:",
-        "option_1": "Your knees bent, with your legs neatly side by side",
-        "option_2": "Your legs crossed",
-        "option_3": "Your legs stretched out or straight",
-        "option_4": "One leg curled under you"
+        "option1": "Your knees bent, with your legs neatly side by side",
+        "option2": "Your legs crossed",
+        "option3": "Your legs stretched out or straight",
+        "option4": "One leg curled under you"
     },
     {
         "id": 29,
         "question": "When you find something really funny, you usually give:",
-        "option_1": "A big, appreciative laugh",
-        "option_2": "A laugh, but not a loud one",
-        "option_3": "A quiet chuckle",
-        "option_4": "A sheepish smile"
+        "option1": "A big, appreciative laugh",
+        "option2": "A laugh, but not a loud one",
+        "option3": "A quiet chuckle",
+        "option4": "A sheepish smile"
     },
     {
         "id": 30,
         "question": "When you enter a party or social gathering, you tend to:",
-        "option_1": "Make a loud entrance, so that everyone notices you",
-        "option_2": "Make a quiet entrance, looking around for someone you know",
-        "option_3": "Make the quietest entrance, trying to stay unnoticed",
-        "option_4": ""
+        "option1": "Make a loud entrance, so that everyone notices you",
+        "option2": "Make a quiet entrance, looking around for someone you know",
+        "option3": "Make the quietest entrance, trying to stay unnoticed",
+        "option4": ""
     },
     {
         "id": 31,
         "question": "If you're focused on a task and you're interrupted, you're likely to:",
-        "option_1": "Welcome the break",
-        "option_2": "Feel extremely irritated",
-        "option_3": "Vary between these two extremes",
-        "option_4": ""
+        "option1": "Welcome the break",
+        "option2": "Feel extremely irritated",
+        "option3": "Vary between these two extremes",
+        "option4": ""
     },
     {
         "id": 32,
         "question": "Your favorite color is:",
-        "option_1": "Red/orange",
-        "option_2": "Black",
-        "option_3": "Yellow/light blue",
-        "option_4": "Green"
+        "option1": "Red/orange",
+        "option2": "Black",
+        "option3": "Yellow/light blue",
+        "option4": "Green"
     },
     {
         "id": 33,
         "question": "Before you fall asleep, you're usually lying:",
-        "option_1": "Stretched out on your back",
-        "option_2": "Stretched out face down on your stomach",
-        "option_3": "On your side, slightly curled",
-        "option_4": "With your head on one arm"
+        "option1": "Stretched out on your back",
+        "option2": "Stretched out face down on your stomach",
+        "option3": "On your side, slightly curled",
+        "option4": "With your head on one arm"
     },
     {
         "id": 34,
         "question": "When you dream, you're often:",
-        "option_1": "Falling",
-        "option_2": "Fighting or struggling",
-        "option_3": "Searching for something or somebody",
-        "option_4": "Your dreams are always pleasant"
+        "option1": "Falling",
+        "option2": "Fighting or struggling",
+        "option3": "Searching for something or somebody",
+        "option4": "Your dreams are always pleasant"
     },
     {
         "id": 35,
         "question": "How do you typically recharge your energy?",
-        "option_1": "By spending time alone",
-        "option_2": "By being around others and socializing",
-        "option_3": "It depends on the situation and my mood",
-        "option_4": ""
+        "option1": "By spending time alone",
+        "option2": "By being around others and socializing",
+        "option3": "It depends on the situation and my mood",
+        "option4": ""
     },
     {
         "id": 36,
         "question": "How do you typically approach meeting new people?",
-        "option_1": "With excitement and a desire to get to know them",
-        "option_2": "With some hesitation or nervousness, but still willing to engage",
-        "option_3": "With reluctance or avoidance ",
-        "option_4": ""
+        "option1": "With excitement and a desire to get to know them",
+        "option2": "With some hesitation or nervousness, but still willing to engage",
+        "option3": "With reluctance or avoidance ",
+        "option4": ""
     },
     {
         "id": 37,
         "question": "What do you prefer to do on a Friday night?",
-        "option_1": "Hang out with companions or participate in a social gathering",
-        "option_2": "Have your hands clasped",
-        "option_3": "Stay home and watch a movie or engage in a solitary activity",
-        "option_4": ""
+        "option1": "Hang out with companions or participate in a social gathering",
+        "option2": "Have your hands clasped",
+        "option3": "Stay home and watch a movie or engage in a solitary activity",
+        "option4": ""
     },
     {
         "id": 38,
         "question": "How do you feel about being the centre of attention?",
-        "option_1": "Enjoy it and find it energizing",
-        "option_2": "Tolerate it but feel uncomfortable or self-conscious",
-        "option_3": "Dislike it and actively avoid being the centre of attention",
-        "option_4": ""
+        "option1": "Enjoy it and find it energizing",
+        "option2": "Tolerate it but feel uncomfortable or self-conscious",
+        "option3": "Dislike it and actively avoid being the centre of attention",
+        "option4": ""
     },
     {
         "id": 39,
         "question": "How do you typically handle conflict or difficult conversations?",
-        "option_1": "Addressing it head-on and seeking to resolve the issue quickly",
-        "option_2": "Avoiding it and hoping the issue resolves on its own",
-        "option_3": "Reflecting on the issue alone before addressing it",
-        "option_4": ""
+        "option1": "Addressing it head-on and seeking to resolve the issue quickly",
+        "option2": "Avoiding it and hoping the issue resolves on its own",
+        "option3": "Reflecting on the issue alone before addressing it",
+        "option4": ""
     },
     {
         "id": 40,
         "question": "Which of the following best describes your communication style?",
-        "option_1": "Talkative and outgoing",
-        "option_2": "Thoughtful and introspective",
-        "option_3": "Analytical and detail-oriented ",
-        "option_4": ""
+        "option1": "Talkative and outgoing",
+        "option2": "Thoughtful and introspective",
+        "option3": "Analytical and detail-oriented ",
+        "option4": ""
     },
     {
         "id": 41,
         "question": "In a meeting or group discussion, do you:",
-        "option_1": "Speak up often and contribute to the conversation",
-        "option_2": "Listen more than you speak",
-        "option_3": "Prefer not to participate",
-        "option_4": ""
+        "option1": "Speak up often and contribute to the conversation",
+        "option2": "Listen more than you speak",
+        "option3": "Prefer not to participate",
+        "option4": ""
     },
     {
         "id": 42,
         "question": "When making plans with friends or family, do you:",
-        "option_1": "Enjoy planning and organizing social events",
-        "option_2": "Prefer when someone else takes charge of planning",
-        "option_3": "Avoid making plans altogether",
-        "option_4": ""
+        "option1": "Enjoy planning and organizing social events",
+        "option2": "Prefer when someone else takes charge of planning",
+        "option3": "Avoid making plans altogether",
+        "option4": ""
     },
     {
         "id": 43,
         "question": "Do you prefer to have a few close friends or a large network of acquaintances?",
-        "option_1": "A few close friends",
-        "option_2": "A large network of acquaintances",
-        "option_3": "Somewhere in between",
-        "option_4": ""
+        "option1": "A few close friends",
+        "option2": "A large network of acquaintances",
+        "option3": "Somewhere in between",
+        "option4": ""
     },
     {
         "id": 44,
         "question": "Which type of activities do you prefer:",
-        "option_1": "Action-packed and adventurous",
-        "option_2": "Calm and relaxing",
-        "option_3": "A mix of boths",
-        "option_4": ""
+        "option1": "Action-packed and adventurous",
+        "option2": "Calm and relaxing",
+        "option3": "A mix of boths",
+        "option4": ""
     },
     {
         "id": 45,
         "question": "When you are feeling stressed, what do you prefer to do?",
-        "option_1": "Talk to someone about it",
-        "option_2": "Spend time alone to think",
-        "option_3": "It depends on the situation",
-        "option_4": ""
+        "option1": "Talk to someone about it",
+        "option2": "Spend time alone to think",
+        "option3": "It depends on the situation",
+        "option4": ""
     },
     {
         "id": 46,
         "question": "When working on a project, what do you prefer?",
-        "option_1": "Collaborating with others",
-        "option_2": "Working independently",
-        "option_3": "A mix of both",
-        "option_4": ""
+        "option1": "Collaborating with others",
+        "option2": "Working independently",
+        "option3": "A mix of both",
+        "option4": ""
     },
     {
         "id": 47,
         "question": "When making a decision, what do you rely on?",
-        "option_1": "Gut feeling",
-        "option_2": "Analyzing information",
-        "option_3": "A mix of both",
-        "option_4": ""
+        "option1": "Gut feeling",
+        "option2": "Analyzing information",
+        "option3": "A mix of both",
+        "option4": ""
     },
     {
         "id": 48,
         "question": "How do you prefer to approach a problem?",
-        "option_1": "Think through it on your own",
-        "option_2": "Talk it out with others and brainstorm ideas",
-        "option_3": "A mix of both",
-        "option_4": ""
+        "option1": "Think through it on your own",
+        "option2": "Talk it out with others and brainstorm ideas",
+        "option3": "A mix of both",
+        "option4": ""
     },
     {
         "id": 49,
         "question": "How do you usually feel about spending money?",
-        "option_1": "I enjoy it and don't really think about the consequences.",
-        "option_2": "I try to be responsible, but sometimes I overspend.",
-        "option_3": "I feel guilty about spending money and try to avoid it when possible.",
-        "option_4": ""
+        "option1": "I enjoy it and don't really think about the consequences.",
+        "option2": "I try to be responsible, but sometimes I overspend.",
+        "option3": "I feel guilty about spending money and try to avoid it when possible.",
+        "option4": ""
     }
     ,
     {
         "id": 50,
         "question": "Please choose one statement that best describes you",
-        "option_1": "I like to analyze and evaluate information.",
-        "option_2": "I am an effective negotiator.",
-        "option_3": "I strive to be in a position of power.",
-        "option_4": "I always plan my expenses in advance."
+        "option1": "I like to analyze and evaluate information.",
+        "option2": "I am an effective negotiator.",
+        "option3": "I strive to be in a position of power.",
+        "option4": "I always plan my expenses in advance."
     }
 ]

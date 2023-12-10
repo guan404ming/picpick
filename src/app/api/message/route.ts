@@ -10,6 +10,7 @@ import { authOptions } from "@/lib/auth/auth";
 
 const addMessageRequestSchema = z.object({
     content: z.string(),
+    sender: z.string()
 });
 
 type addMessageRequest = z.infer<typeof addMessageRequestSchema>;
@@ -24,7 +25,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const { content } = data as addMessageRequest;
+  const { content, sender } = data as addMessageRequest;
 
   try {
     const session = await getServerSession(authOptions);
@@ -42,7 +43,8 @@ export async function POST(request: NextRequest) {
       .values({
         userId: user.id,
         content: content,
-})
+        sender: sender
+      })
       .onConflictDoNothing()
       .execute();
   } catch (error) {

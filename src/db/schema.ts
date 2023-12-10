@@ -1,4 +1,4 @@
-import { index, pgTable, serial, varchar, timestamp, integer } from "drizzle-orm/pg-core";
+import { index, pgTable, serial, boolean, varchar, timestamp, integer } from "drizzle-orm/pg-core";
 
 export const userTable = pgTable(
   "USER",
@@ -12,12 +12,13 @@ export const userTable = pgTable(
   }),
 ); 
 
-export const favourites = pgTable(
+export const favouritesTable = pgTable(
   "FAVOURITES",
   {
     id: serial("id").primaryKey(),
     userId: integer("user_id").references(() => userTable.id, { onDelete: "cascade" }),
     bookId: varchar("book_id").references(() => bookTable.bookId, { onDelete: "cascade" }),
+    bookmark: integer("bookmark").default(0),
     createdAt: timestamp("created_at", { mode:"date" }).defaultNow(),
   },
 );
@@ -31,6 +32,9 @@ export const bookTable = pgTable(
     epubLink: varchar("epub_link", { length: 512 }).notNull(),
     author: varchar("author", { length: 256 }),
     publishDate: varchar("publish_date", { length: 256 }),
+    topics: varchar("topics", { length: 256 }),
+    language: varchar("language", { length: 256 }),
+    publisher: varchar("publisher", { length: 256 })
   }
 );
 
@@ -40,6 +44,7 @@ export const messageTable = pgTable(
     id: serial("id").primaryKey(),
     userId: integer("user_id").references(() => userTable.id, { onDelete: "cascade" }),
     content: varchar("content", { length: 512 }).notNull(),
+    sender: varchar("sender", { length: 256 }).notNull(),
     createdAt: timestamp("created_at", { mode:"date" }).defaultNow(),
   }
 );
