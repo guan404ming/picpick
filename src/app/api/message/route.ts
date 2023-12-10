@@ -1,16 +1,15 @@
 import { getServerSession } from "next-auth";
 import { NextResponse, type NextRequest } from "next/server";
 
-import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { db } from "@/db";
-import { messageTable, userTable } from "@/db/schema";
+import { messageTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 const addMessageRequestSchema = z.object({
   content: z.string(),
-  sender: z.string(),
+  sender: z.enum(["system", "user"]),
 });
 
 type addMessageRequest = z.infer<typeof addMessageRequestSchema>;
@@ -31,19 +30,12 @@ export async function POST(request: NextRequest) {
     const session = await getServerSession(authOptions);
     if (!session?.user?.email) throw Error("No session!");
 
-    const [user] = await db
-      .select({
-        id: userTable.id,
-      })
-      .from(userTable)
-      .where(eq(userTable.email, session.user.email));
-
     await db
       .insert(messageTable)
       .values({
-        userId: user.id,
         content: content,
         sender: sender,
+        userId: session.user.id
       })
       .onConflictDoNothing()
       .execute();

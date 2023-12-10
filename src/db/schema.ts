@@ -1,10 +1,10 @@
 import {
   index,
+  integer,
   pgTable,
   serial,
-  varchar,
   timestamp,
-  integer,
+  varchar,
 } from "drizzle-orm/pg-core";
 
 export const userTable = pgTable(
@@ -23,16 +23,19 @@ export const favouritesTable = pgTable("FAVOURITES", {
   id: serial("id").primaryKey(),
   userId: integer("user_id").references(() => userTable.id, {
     onDelete: "cascade",
+    onUpdate: "cascade",
   }),
-  bookId: varchar("book_id").references(() => bookTable.bookId, {
+  bookId: integer("book_id").references(() => bookTable.id, {
     onDelete: "cascade",
+    onUpdate: "cascade",
   }),
   bookmark: integer("bookmark").default(0),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
 });
 
 export const bookTable = pgTable("PICBOOK", {
-  bookId: varchar("book_id", { length: 256 }).primaryKey(),
+  id: serial("id").primaryKey().unique(),
+  bookId: varchar("book_id", { length: 256 }),
   bookName: varchar("book_name", { length: 256 }).notNull(),
   pdfLink: varchar("pdf_link", { length: 512 }),
   epubLink: varchar("epub_link", { length: 512 }).notNull(),
@@ -45,12 +48,15 @@ export const bookTable = pgTable("PICBOOK", {
 
 export const messageTable = pgTable("MESSAGE", {
   id: serial("id").primaryKey(),
-  userId: integer("user_id").references(() => userTable.id, {
-    onDelete: "cascade",
-  }),
+  userId: integer("user_id")
+    .references(() => userTable.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    })
+    .notNull(),
   content: varchar("content", { length: 512 }).notNull(),
-  sender: varchar("sender", { length: 256 }).notNull(),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
+  sender: varchar("sender", { enum: ["user", "system"] }).notNull(),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
 });
 
 export const questionTable = pgTable("QUESTION", {

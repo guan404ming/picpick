@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { db } from "@/db";
-import { favouritesTable, userTable } from "@/db/schema";
+import { bookTable, favouritesTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 const addFavoriteRequestSchema = z.object({
@@ -29,18 +29,16 @@ export async function POST(request: NextRequest) {
     const session = await getServerSession(authOptions);
     if (!session?.user?.email) throw Error("No session!");
 
-    const [user] = await db
-      .select({
-        id: userTable.id,
-      })
-      .from(userTable)
-      .where(eq(userTable.email, session.user.email));
+    const [book] = await db
+      .select()
+      .from(bookTable)
+      .where(eq(bookTable.bookId, bookId));
 
     await db
       .insert(favouritesTable)
       .values({
-        userId: user.id,
-        bookId: bookId,
+        userId: session.user.id,
+        bookId: book.id,
       })
       .onConflictDoNothing()
       .execute();

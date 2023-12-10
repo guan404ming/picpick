@@ -1,31 +1,27 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+
+import { desc, eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { messageTable } from "@/db/schema";
+import { authOptions } from "@/lib/auth/auth";
+
 import Message from "./_components/Message";
 
-const chats: {
-  text: string;
-  from: "me" | "other";
-  options?: string[];
-}[] = [
-  {
-    text: "here's the picture book of the day:",
-    from: "other",
-    options: ["Read", "More"],
-  },
-  { text: "Option1", from: "me" },
-  {
-    text: "Here's the first question:",
-    from: "other",
-    options: ["option1", "option2", "option3"],
-  },
-  { text: "Yes", from: "me" },
-  {
-    text: "Hello, {username}. I'm Abby. Nice to meet you. Are you ready to get started?",
-    from: "other",
-    options: ["Yes"],
-  },
-];
-
-export default function ChatPage() {
+export default async function ChatPage() {
   const date = "Today, 12/01";
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user.id) {
+    redirect("/");
+  }
+
+  const messageData = await db
+    .select()
+    .from(messageTable)
+    .where(eq(messageTable.userId, session.user.id))
+    .orderBy(desc(messageTable.createdAt));
 
   return (
     <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
@@ -41,7 +37,7 @@ export default function ChatPage() {
           </p>
 
           <div className="flex grow flex-col-reverse space-y-1 overflow-y-auto">
-            {chats.map((chat, idx) => (
+            {messageData.map((chat, idx) => (
               <Message chat={chat} key={idx}></Message>
             ))}
           </div>
