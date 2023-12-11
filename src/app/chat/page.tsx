@@ -61,7 +61,7 @@ export default async function ChatPage() {
 
   return (
     <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
-      <div className="w-2/3 overflow-y-auto rounded-xl bg-white shadow-md">
+      <div className="w-2/3 min-w-[300px] overflow-y-auto rounded-xl bg-white shadow-md">
         <div className="flex w-full items-center justify-start px-8 py-3 shadow">
           <span className="chatbot-icon">ICON</span>
           <span className="p-4 text-xl">PicPick</span>

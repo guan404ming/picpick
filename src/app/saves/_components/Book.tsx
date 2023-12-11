@@ -39,15 +39,15 @@ export default function Book({ book }: BookProps) {
 
   return (
     <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
-      <Card className="w-[300px] text-center drop-shadow">
+      <Card className="w-[300px] text-center drop-shadow max-sm:w-[200px]">
         <CardHeader>
           <CardTitle className="text-md mb-2 flex justify-between">
-            <p className="max-w-[200px] truncate">{book.bookName}</p>
-            <Bookmark className="cursor-pointer" />
+            <p className="max-w-[80%] truncate">{book.bookName}</p>
+            <Bookmark className="cursor-pointer" width={20} />
           </CardTitle>
         </CardHeader>
         <DialogTrigger>
-          <CardContent className="w-[250px] cursor-pointer">
+          <CardContent className="w-[250px] cursor-pointer max-sm:w-[150px]">
             <AspectRatio ratio={4 / 5} className="bg-muted">
               <Image
                 src={"/book1.jpg"}
@@ -67,7 +67,7 @@ export default function Book({ book }: BookProps) {
         </CardFooter>
       </Card>
 
-      <DialogContent className="flex min-w-[800px] justify-between space-x-10 p-12">
+      <DialogContent className="flex max-w-[800px] justify-between p-12 max-md:max-w-[400px] max-md:flex-col md:space-x-10">
         <div className="w-full space-y-5">
           <div className="mb-2 flex justify-between font-bold">
             <p className="max-w-[300px]">{book.bookName}</p>
@@ -89,7 +89,7 @@ export default function Book({ book }: BookProps) {
           </div>
         </div>
 
-        <div className="flex w-[500px] flex-col space-y-5 bg-[#E9E9E9] p-10">
+        <div className="flex w-[500px] flex-col space-y-5 bg-[#E9E9E9] p-10 max-md:mx-[auto] max-md:max-w-[250px]">
           <Link href={"/book/123"}>
             <AspectRatio ratio={4 / 5} className="bg-muted">
               <Image

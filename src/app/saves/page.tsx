@@ -31,7 +31,7 @@ export default async function SavesPage() {
     <div className="block w-full overflow-scroll p-8">
       <h1 className="mb-10 text-3xl font-bold">Saves</h1>
       <div className="flex w-full flex-col items-center justify-center">
-        <div className="grid gap-x-20 gap-y-14 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+        <div className="grid gap-x-16 gap-y-14 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
           {books.map((book, idx) => (
             <Book key={idx} book={book}></Book>
           ))}
