@@ -1,4 +1,4 @@
-import { useParams } from "next/navigation";
+import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 import { eq } from "drizzle-orm";
@@ -6,19 +6,25 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { bookTable } from "@/db/schema";
 
-export async function GET() {
-  const { bookId: bookId_ } = useParams();
-  const bookId = Array.isArray(bookId_) ? bookId_[0] : bookId_;
-
+export async function GET(
+  req: NextRequest,
+  {
+    params,
+  }: {
+    params: {
+      bookId: string;
+    };
+  },
+) {
   try {
     const result = await db
       .select()
       .from(bookTable)
-      .where(eq(bookTable.bookId, bookId));
+      .where(eq(bookTable.bookId, params.bookId));
 
     if (result.length === 0) {
       return NextResponse.json(
-        { error: `cannot find book id "${bookId}"` },
+        { error: `cannot find book id "${params.bookId}"` },
         { status: 404 },
       );
     }
