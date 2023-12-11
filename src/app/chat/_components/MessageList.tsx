@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import useChat from "@/hooks/useChat";
 
+import GreetingMessage from "./GreetingMessage";
 import Message from "./Message";
 import ResultMessage from "./ResultMessage";
 
@@ -53,22 +54,7 @@ export default function MessageList({ messageList }: MessageListProps) {
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
       {count}
-      {messageList.length === 0 && (
-        <Message
-          setAnswerList={setAnswerList}
-          count={count}
-          setCount={setCount}
-          chat={{
-            id: 0,
-            userId: 1,
-            content: "Hello, let's chat!",
-            sender: "system",
-            createdAt: new Date(),
-            questionId: 1,
-            options: ["GO"],
-          }}
-        ></Message>
-      )}
+      {messageList.length === 0 && <GreetingMessage />}
       {messageList.map((chat) => (
         <div key={chat.id}>
           {!chat.bookId ? (
@@ -77,11 +63,11 @@ export default function MessageList({ messageList }: MessageListProps) {
               setAnswerList={setAnswerList}
               setCount={setCount}
               chat={chat}
-            ></Message>
+            />
           ) : (
             <ResultMessage
               book={{ id: chat.bookId, bookName: chat.bookName! }}
-            ></ResultMessage>
+            />
           )}
         </div>
       ))}

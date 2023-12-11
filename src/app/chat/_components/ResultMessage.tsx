@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import picPick from "@/assets/pic-pick.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -32,9 +34,12 @@ export default function ResultMessage({ book }: ResultMessageProps) {
             <span>{book.bookName}</span>
           </div>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <Button className="block" size="lg">
-              Read
-            </Button>
+            <Link href={`/book/${book.id}`}>
+              <Button className="block w-full" size="lg">
+                Read
+              </Button>
+            </Link>
+
             <Button
               className="block"
               size="lg"
