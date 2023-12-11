@@ -4,12 +4,13 @@ import { useRouter } from "next/navigation";
 
 // import { publicEnv } from "@/lib/env/public";
 import bookList from "@/assets/book.json";
+import type { Book } from "@/lib/types/db";
 
 export default function useChat() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const getBook = async ({ answer }: { answer: string }) => {
+  const getBook = ({ answer }: { answer: string }) => {
     if (loading) return;
 
     setLoading(true);
@@ -33,17 +34,21 @@ export default function useChat() {
     console.log(answer);
     setLoading(false);
 
-    return bookList[0];
+    const res: Book = bookList[0];
+
+    return res;
   };
 
   const postMessage = async ({
     content,
     sender,
     questionId,
+    bookId,
   }: {
     content: string;
     sender: "system" | "user";
     questionId: number | null;
+    bookId: number | null;
   }) => {
     if (loading) return;
 
@@ -51,7 +56,7 @@ export default function useChat() {
 
     const res = await fetch("/api/message", {
       method: "POST",
-      body: JSON.stringify({ content, sender, questionId }),
+      body: JSON.stringify({ content, sender, questionId, bookId }),
     });
 
     if (!res.ok) {
@@ -70,6 +75,7 @@ export default function useChat() {
       content: answer,
       sender: "user",
       questionId: null,
+      bookId: null,
     });
     router.refresh();
 
@@ -93,6 +99,7 @@ export default function useChat() {
       content: body.question,
       sender: "system",
       questionId: body.id,
+      bookId: null,
     });
 
     router.refresh();

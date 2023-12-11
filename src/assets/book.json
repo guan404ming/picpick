@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "author": "Very, Lydia L. A. (Lydia Louisa Anna), 1823-1901; Grimm, Jacob, 1785-1863",
     "publishDate": "[1863?]",
     "topics": "Folklore -- Germany",
@@ -11,6 +12,7 @@
     "pdfLink": "https://archive.org/download/redrbook_idinghood00veryiala/redrbook_idinghood00veryiala.pdf"
   },
   {
+    "id": 2,
     "author": "La Fontaine, Jean de, 1621-1695; ill",
     "publishDate": "[c1921]",
     "publisher": "Lausanne :",
@@ -21,6 +23,7 @@
     "pdfLink": "https://archive.org/download/lesplusbellesfab00lafo/lesplusbellesfab00lafo.pdf"
   },
   {
+    "id": 3,
     "author": "Crane, Thomas, b. 1843?; Houghton, Ellen Elizabeth, 1853-1922",
     "publishDate": "[1882]",
     "topics": "Poetry of places, France -- Description and travel Juvenile literature",
@@ -32,6 +35,7 @@
     "pdfLink": "https://archive.org/download/abroadcranethoma00craniala/abroadcranethoma00craniala.pdf"
   },
   {
+    "id": 4,
     "author": "M.B. De Monvel",
     "language": "French",
     "bookId": "___font",
@@ -40,6 +44,7 @@
     "pdfLink": "https://archive.org/download/___font/___font.pdf"
   },
   {
+    "id": 5,
     "author": "Rimmer, Caroline Hunt, 1851-1918",
     "publishDate": "1893",
     "topics": "Human figure in art, Children in art",
@@ -51,6 +56,7 @@
     "pdfLink": "https://archive.org/download/figuredrawingfor00rimm/figuredrawingfor00rimm.pdf"
   },
   {
+    "id": 6,
     "author": "Newcomb, Harvey, 1803-1863",
     "publishDate": "1848",
     "topics": "Young women -- Conduct of life, Girls -- Conduct of life",
@@ -62,6 +68,7 @@
     "pdfLink": "https://archive.org/download/howtobeladybookf00newciala/howtobeladybookf00newciala.pdf"
   },
   {
+    "id": 7,
     "author": "Dalziel, Edward, 1817-1905; Dalziel, George, 1815-1902",
     "publishDate": "1867",
     "topics": "Gift books, Illustrated children's books, Children's stories, English",
@@ -73,6 +80,7 @@
     "pdfLink": "https://archive.org/download/childscolouredgi00dalziala/childscolouredgi00dalziala.pdf"
   },
   {
+    "id": 8,
     "author": "Baum, L. Frank (Lyman Frank), 1856-1919; Denslow, W. W. (William Wallace), 1856-1915",
     "publishDate": "1900, c1899",
     "topics": "Adventure and adventurers, Wizards",
@@ -84,6 +92,7 @@
     "pdfLink": "https://archive.org/download/wonderfulwizardo00baumiala/wonderfulwizardo00baumiala.pdf"
   },
   {
+    "id": 9,
     "author": "Burnett, Frances Hodgson, 1849-1924; Birch, Reginald Bathurst, 1856-1943",
     "publishDate": "1886",
     "topics": "Altruism, Conduct of life, Family, Grandparent and child",
@@ -95,6 +104,7 @@
     "pdfLink": "https://archive.org/download/littlelordfauntl00burniala/littlelordfauntl00burniala.pdf"
   },
   {
+    "id": 10,
     "author": "Baum, L. Frank (Lyman Frank), 1856-1919; Neill, John R. (John Rea), ill",
     "publishDate": "c1904",
     "topics": "Fantasy",
@@ -106,6 +116,7 @@
     "pdfLink": "https://archive.org/download/marvelouslandofo00baum/marvelouslandofo00baum.pdf"
   },
   {
+    "id": 11,
     "author": "",
     "publishDate": "[ca. 1885]",
     "topics": "Love, Values",
@@ -117,6 +128,7 @@
     "pdfLink": "https://archive.org/download/beautythebeast00cinciala/beautythebeast00cinciala.pdf"
   },
   {
+    "id": 12,
     "author": "Crane, Walter, 1845-1915; Gilbert, John, Sir, 1817-1897; McConnell, William, 1833-1867; Tenniel, John, Sir, 1820-1914; Weir, Harrison, 1824-1906; Zwecker, Johann Baptist, 1814-1874",
     "publishDate": "1877",
     "topics": "Children's songs",
@@ -128,6 +140,7 @@
     "pdfLink": "https://archive.org/download/mothergoosesnurs00craniala/mothergoosesnurs00craniala.pdf"
   },
   {
+    "id": 13,
     "author": "Beard, Daniel Carter, 1850-1941",
     "publishDate": "1931, c1911",
     "topics": "Boatbuilding",
@@ -139,6 +152,7 @@
     "pdfLink": "https://archive.org/download/boatbuildingboat00bear/boatbuildingboat00bear.pdf"
   },
   {
+    "id": 14,
     "author": "Twain, Mark, 1835-1910",
     "publishDate": "1885",
     "topics": "Adventure and adventurers, Mississippi River -- Juvenile literature, Missouri -- Juvenile literature",
@@ -150,6 +164,7 @@
     "pdfLink": "https://archive.org/download/adventureshuckle00twaiiala/adventureshuckle00twaiiala.pdf"
   },
   {
+    "id": 15,
     "author": "",
     "publishDate": "19xx",
     "topics": "",
@@ -161,6 +176,7 @@
     "pdfLink": "https://archive.org/download/___firs/___firs.pdf"
   },
   {
+    "id": 16,
     "author": "Collodi, Carlo, 1826-1890",
     "publishDate": "1892",
     "topics": "Fantasy, Puppets, Children's stories, Italian",
@@ -172,6 +188,7 @@
     "pdfLink": "https://archive.org/download/storyofpuppetora00colliala/storyofpuppetora00colliala.pdf"
   },
   {
+    "id": 17,
     "author": "S\u00e9gur, Sophie, comtesse de, 1799-1874; Sterrett, Virginia Frances",
     "publishDate": "c1920",
     "topics": "Fairy tales",
@@ -183,6 +200,7 @@
     "pdfLink": "https://archive.org/download/oldfrenchfairyta00sgrich/oldfrenchfairyta00sgrich.pdf"
   },
   {
+    "id": 19,
     "author": "Perrault, Charles, 1628-1703; Leprince de Beaumont, Madame (Jeanne-Marie), 1711-1780; Aulnoy, Madame d' (Marie-Catherine), 1650 or 51-1705",
     "publishDate": "1908",
     "topics": "Fairy tales, French language",
@@ -194,6 +212,7 @@
     "pdfLink": "https://archive.org/download/contesdefees00perr/contesdefees00perr.pdf"
   },
   {
+    "id": 20,
     "author": "Stowe, Harriet Beecher, 1811-1896",
     "publishDate": "[1900]",
     "topics": "Slavery -- United States",
@@ -205,6 +224,7 @@
     "pdfLink": "https://archive.org/download/uncletomscabinor00stowiala/uncletomscabinor00stowiala.pdf"
   },
   {
+    "id": 21,
     "author": "Grover, Eulalie Osgood, 1873-",
     "publishDate": "[c1911]",
     "topics": "",
@@ -216,6 +236,7 @@
     "pdfLink": "https://archive.org/download/kittenscatsbooko00grov/kittenscatsbooko00grov.pdf"
   },
   {
+    "id": 22,
     "author": "",
     "publishDate": "[188-?]",
     "topics": "Inheritance and succession",
@@ -227,6 +248,7 @@
     "pdfLink": "https://archive.org/download/babesinwood00newyiala/babesinwood00newyiala.pdf"
   },
   {
+    "id": 23,
     "author": "MacDonald, George, 1824-1905; Smith, Jessie Willcox, 1863-1935, ill",
     "publishDate": "c1920",
     "topics": "Fairy tales",
@@ -238,6 +260,7 @@
     "pdfLink": "https://archive.org/download/princessgoblin00macd/princessgoblin00macd.pdf"
   },
   {
+    "id": 24,
     "author": "McGuffey, William Holmes, 1800-1873",
     "publishDate": "c1909",
     "topics": "McGuffey, William Holmes, 1800-1873, Readers (Primary)",
@@ -249,6 +272,7 @@
     "pdfLink": "https://archive.org/download/mcguffeyseclecti00mcgu/mcguffeyseclecti00mcgu.pdf"
   },
   {
+    "id": 25,
     "author": "Perrault, Charles, 1628-1703",
     "publishDate": "[between 1864 and 1870?]",
     "topics": "",
@@ -260,6 +284,7 @@
     "pdfLink": "https://archive.org/download/sleepingbeautyin00perriala/sleepingbeautyin00perriala.pdf"
   },
   {
+    "id": 26,
     "author": "",
     "publishDate": "1903",
     "topics": "Christmas Stories",
@@ -270,6 +295,7 @@
     "pdfLink": "https://archive.org/download/TheNightBeforeChristmasAndOtherPopularStoriesForChildren/TheNightBeforeChristmasAndOtherPopularStoriesForChildren.pdf"
   },
   {
+    "id": 27,
     "author": "Furniss, Dorothy",
     "publishDate": "[192-?]",
     "topics": "Drawing -- Study and teaching",
@@ -281,6 +307,7 @@
     "pdfLink": "https://archive.org/download/drawingforbeginn00furn/drawingforbeginn00furn.pdf"
   },
   {
+    "id": 28,
     "author": "Lang, Andrew, 1844-1912; Ford, H. J. (Henry Justice), 1860-1941, ill",
     "publishDate": "1906, c1901",
     "topics": "Folklore, Fairy tales",
@@ -292,6 +319,7 @@
     "pdfLink": "https://archive.org/download/violetfairybook00lang/violetfairybook00lang.pdf"
   },
   {
+    "id": 29,
     "author": "Alcott, Louisa May, 1832-1888; Alcott, May, 1840-1879; Billings, Hammatt, 1818-1874; Andrew, John, 1815-1875",
     "publishDate": "1868-1869",
     "topics": "Family, Young women -- Conduct of life",
@@ -303,6 +331,7 @@
     "pdfLink": "https://archive.org/download/littlewomenormeg00alcoiala/littlewomenormeg00alcoiala.pdf"
   },
   {
+    "id": 30,
     "author": "Lutz, Edwin George, b. 1868",
     "publishDate": "c1913",
     "topics": "Drawing -- Study and teaching",
@@ -314,6 +343,7 @@
     "pdfLink": "https://archive.org/download/whattodrawhowtod00lutz/whattodrawhowtod00lutz.pdf"
   },
   {
+    "id": 31,
     "author": "Asbj\u00f8rnsen, Peter Christen, 1812-1885; Moe, J\u00f8rgen Engebretsen, 1813-1882; Dasent, George Webbe, Sir, 1817-1896; Nielsen, Kay Rasmus, 1886-1957",
     "publishDate": "[1922?]",
     "topics": "Fairy tales, Folklore -- Norway",

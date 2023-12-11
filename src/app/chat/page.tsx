@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { desc, eq } from "drizzle-orm";
 
 import { db } from "@/db";
-import { messageTable, questionTable } from "@/db/schema";
+import { bookTable, messageTable, questionTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 import MessageList from "./_components/MessageList";
@@ -18,20 +18,10 @@ export default async function ChatPage() {
   }
 
   const messageData = await db
-    .select({
-      id: messageTable.id,
-      userId: messageTable.userId,
-      content: messageTable.content,
-      sender: messageTable.sender,
-      createdAt: messageTable.createdAt,
-      questionId: messageTable.questionId,
-      option1: questionTable.option1,
-      option2: questionTable.option2,
-      option3: questionTable.option3,
-      option4: questionTable.option4,
-    })
+    .select()
     .from(messageTable)
     .leftJoin(questionTable, eq(messageTable.questionId, questionTable.id))
+    .leftJoin(bookTable, eq(messageTable.bookId, bookTable.id))
     .where(eq(messageTable.userId, session.user.id))
     .limit(10)
     .orderBy(desc(messageTable.createdAt));
@@ -43,19 +33,23 @@ export default async function ChatPage() {
     sender: "system" | "user";
     createdAt: Date;
     questionId: number | null;
+    bookId: number | null;
+    bookName?: string | null;
     options: string[];
   }> = messageData.map((message) => ({
-    id: message.id,
-    userId: message.userId,
-    content: message.content,
-    sender: message.sender,
-    createdAt: message.createdAt,
-    questionId: message.questionId,
+    id: message.MESSAGE.id,
+    userId: message.MESSAGE.userId,
+    content: message.MESSAGE.content,
+    sender: message.MESSAGE.sender,
+    createdAt: message.MESSAGE.createdAt,
+    questionId: message.MESSAGE.questionId,
+    bookId: message.MESSAGE.bookId,
+    bookName: message.PICBOOK?.bookName,
     options: [
-      message.option1,
-      message.option2,
-      message.option3,
-      message.option4,
+      message.QUESTION?.option1,
+      message.QUESTION?.option2,
+      message.QUESTION?.option3,
+      message.QUESTION?.option4,
     ].map((option) => option as string),
   }));
 

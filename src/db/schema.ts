@@ -52,6 +52,10 @@ export const messageTable = pgTable("MESSAGE", {
     onDelete: "cascade",
     onUpdate: "cascade",
   }),
+  bookId: integer("book_id").references(() => bookTable.id, {
+    onDelete: "cascade",
+    onUpdate: "cascade",
+  }),
   userId: integer("user_id")
     .references(() => userTable.id, {
       onDelete: "cascade",

@@ -5,12 +5,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import useChat from "@/hooks/useChat";
-import type { Book } from "@/lib/types/db";
 
 import Message from "./Message";
 import ResultMessage from "./ResultMessage";
 
-type MessageProps = {
+type MessageListProps = {
   messageList: {
     id: number;
     userId: number;
@@ -18,22 +17,32 @@ type MessageProps = {
     sender: "system" | "user";
     createdAt: Date;
     questionId: number | null;
+    bookId: number | null;
+    bookName?: string | null;
     options: string[];
   }[];
 };
 
-export default function MessageList({ messageList }: MessageProps) {
+export default function MessageList({ messageList }: MessageListProps) {
   const [count, setCount] = useState(0);
   const [answerList, setAnswerList] = useState<string[]>([]);
-  const [book, setBook] = useState<Book>();
   const router = useRouter();
-  const { postMessage, getBook } = useChat();
+  const { getBook, postMessage } = useChat();
 
   useEffect(() => {
     (async () => {
       if (count === 3) {
-        const book_ = await getBook({ answer: answerList.join(" ") });
-        setBook(book_);
+        const book_ = getBook({ answer: answerList.join(" ") });
+        if (book_?.id) {
+          console.log(book_.id);
+          await postMessage({
+            content: "Recommendation",
+            sender: "system",
+            questionId: null,
+            bookId: book_.id,
+          });
+        }
+
         router.refresh();
         setCount(0);
         setAnswerList([]);
@@ -44,7 +53,6 @@ export default function MessageList({ messageList }: MessageProps) {
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
       {count}
-      <ResultMessage book={book}></ResultMessage>
       {messageList.length === 0 && (
         <Message
           setAnswerList={setAnswerList}
@@ -61,14 +69,21 @@ export default function MessageList({ messageList }: MessageProps) {
           }}
         ></Message>
       )}
-      {messageList.map((chat, idx) => (
-        <Message
-          count={count}
-          setAnswerList={setAnswerList}
-          setCount={setCount}
-          chat={chat}
-          key={idx}
-        ></Message>
+      {messageList.map((chat) => (
+        <div key={chat.id}>
+          {!chat.bookId ? (
+            <Message
+              count={count}
+              setAnswerList={setAnswerList}
+              setCount={setCount}
+              chat={chat}
+            ></Message>
+          ) : (
+            <ResultMessage
+              book={{ id: chat.bookId, bookName: chat.bookName! }}
+            ></ResultMessage>
+          )}
+        </div>
       ))}
     </div>
   );

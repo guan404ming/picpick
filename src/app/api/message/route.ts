@@ -11,6 +11,7 @@ const addMessageRequestSchema = z.object({
   content: z.string(),
   sender: z.enum(["system", "user"]),
   questionId: z.number().nullable(),
+  bookId: z.number().nullable(),
 });
 
 type addMessageRequest = z.infer<typeof addMessageRequestSchema>;
@@ -26,7 +27,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const { content, sender, questionId } = data as addMessageRequest;
+  const { content, sender, questionId, bookId } = data as addMessageRequest;
 
   try {
     const session = await getServerSession(authOptions);
@@ -39,6 +40,7 @@ export async function POST(request: NextRequest) {
         sender: sender,
         userId: session.user.id,
         questionId: questionId,
+        bookId: bookId,
       })
       .onConflictDoNothing()
       .execute();

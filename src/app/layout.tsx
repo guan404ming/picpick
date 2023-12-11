@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <NextAuthProvider>
         <body className={noto.className}>
           <div className="mx-auto flex">
