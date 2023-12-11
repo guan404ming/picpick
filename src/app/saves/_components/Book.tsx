@@ -67,11 +67,10 @@ export default function Book({ book }: BookProps) {
         </CardFooter>
       </Card>
 
-      <DialogContent className="flex max-w-[800px] justify-between p-12 max-md:max-w-[400px] max-md:flex-col md:space-x-10">
-        <div className="w-full space-y-5">
-          <div className="mb-2 flex justify-between font-bold">
-            <p className="max-w-[300px]">{book.bookName}</p>
-            <Bookmark className="cursor-pointer" />
+      <DialogContent className="flex max-w-[80%] justify-between p-12 max-md:p-10 max-sm:flex-col max-sm:text-xs sm:min-w-[90%] md:min-w-[70%] md:space-x-10 lg:min-w-[40%] lg:max-w-[40%]">
+        <div className="space-y-5">
+          <div className="mb-2 font-bold max-sm:items-center">
+            {book.bookName}
           </div>
           <div className="flex flex-col space-y-3">
             <div className="grid w-5/6 grid-cols-2">
@@ -89,7 +88,7 @@ export default function Book({ book }: BookProps) {
           </div>
         </div>
 
-        <div className="flex w-[500px] flex-col space-y-5 bg-[#E9E9E9] p-10 max-md:mx-[auto] max-md:max-w-[250px]">
+        <div className="flex min-w-[200px] flex-col space-y-5 bg-[#E9E9E9] p-10 max-md:mx-[auto] max-md:p-6">
           <Link href={"/book/123"}>
             <AspectRatio ratio={4 / 5} className="bg-muted">
               <Image
