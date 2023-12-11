@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 
 import { db } from "@/db";
-import { favouritesTable } from "@/db/schema";
+import { favouriteTable } from "@/db/schema";
 
 export async function GET() {
   const { userId } = useParams();
@@ -19,8 +19,8 @@ export async function GET() {
   try {
     const book = await db
       .select()
-      .from(favouritesTable)
-      .where(eq(favouritesTable.userId, parseInt(userId as string)));
+      .from(favouriteTable)
+      .where(eq(favouriteTable.userId, parseInt(userId as string)));
     return NextResponse.json(book);
   } catch (error) {
     console.log(error);

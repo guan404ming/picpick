@@ -17,13 +17,12 @@ import {
 } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
+import type { SelectFavourite, SelectBook } from "@/lib/types/db";
 
 type BookProps = {
   book: {
-    bookName: string | null;
-    author: string | null;
-    publishDate: string | null;
-    topics: string | null;
+    FAVOURITE: SelectFavourite;
+    BOOK: SelectBook;
   };
 };
 
@@ -42,7 +41,7 @@ export default function Book({ book }: BookProps) {
       <Card className="w-[300px] text-center drop-shadow max-sm:w-[200px]">
         <CardHeader>
           <CardTitle className="text-md mb-2 flex justify-between">
-            <p className="max-w-[80%] truncate">{book.bookName}</p>
+            <p className="max-w-[80%] truncate">{book.BOOK.bookName}</p>
             <Bookmark className="cursor-pointer" width={20} />
           </CardTitle>
         </CardHeader>
@@ -70,20 +69,20 @@ export default function Book({ book }: BookProps) {
       <DialogContent className="flex max-w-[80%] justify-between p-12 max-md:p-10 max-sm:flex-col max-sm:text-xs sm:min-w-[90%] md:min-w-[70%] md:space-x-10 lg:min-w-[40%] lg:max-w-[40%]">
         <div className="space-y-5">
           <div className="mb-2 font-bold max-sm:items-center">
-            {book.bookName}
+            {book.BOOK.bookName}
           </div>
           <div className="flex flex-col space-y-3">
             <div className="grid w-5/6 grid-cols-2">
               <span className="mr-5 font-bold">By:</span>
-              <span>{book.author}</span>
+              <span>{book.BOOK.bookName}</span>
             </div>
             <div className="grid w-5/6 grid-cols-2">
               <span className="mr-5 font-bold">Topics: </span>
-              <span>{book.topics}</span>
+              <span>{book.BOOK.bookName}</span>
             </div>
             <div className="grid w-5/6 grid-cols-2">
               <span className="mr-5 font-bold">Publish Date:</span>
-              <span>{book.publishDate}</span>
+              <span>{book.BOOK.bookName}</span>
             </div>
           </div>
         </div>

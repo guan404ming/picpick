@@ -4,6 +4,7 @@ import {
   pgTable,
   serial,
   timestamp,
+  unique,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -19,22 +20,28 @@ export const userTable = pgTable(
   }),
 );
 
-export const favouritesTable = pgTable("FAVOURITES", {
-  id: serial("id").primaryKey(),
-  userId: integer("user_id").references(() => userTable.id, {
-    onDelete: "cascade",
-    onUpdate: "cascade",
+export const favouriteTable = pgTable(
+  "FAVOURITE",
+  {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id").references(() => userTable.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+    bookId: integer("book_id").references(() => bookTable.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+    bookmark: integer("bookmark").default(0),
+    createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
+  },
+  (table) => ({
+    unq: unique().on(table.userId, table.bookId),
   }),
-  bookId: integer("book_id").references(() => bookTable.id, {
-    onDelete: "cascade",
-    onUpdate: "cascade",
-  }),
-  bookmark: integer("bookmark").default(0),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
-});
+);
 
-export const bookTable = pgTable("PICBOOK", {
-  id: serial("id").primaryKey().unique(),
+export const bookTable = pgTable("BOOK", {
+  id: serial("id").primaryKey(),
   bookId: varchar("book_id", { length: 256 }).unique(),
   bookName: varchar("book_name", { length: 256 }).notNull(),
   pdfLink: varchar("pdf_link", { length: 512 }),

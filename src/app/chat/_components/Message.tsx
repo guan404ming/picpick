@@ -6,16 +6,14 @@ import picPick from "@/assets/pic-pick.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import useChat from "@/hooks/useChat";
+import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 import { cn } from "@/lib/utils";
 
 type MessageProps = {
-  chat: {
-    id: number;
-    userId: number;
-    content: string;
-    sender: "system" | "user";
-    createdAt: Date;
-    questionId: number | null;
+  message: {
+    MESSAGE: SelectMessage;
+    BOOK: SelectBook | null;
+    QUESTION: SelectQuestion | null;
     options: string[];
   };
   setCount: Dispatch<SetStateAction<number>>;
@@ -24,18 +22,18 @@ type MessageProps = {
 };
 
 export default function Message({
-  chat,
+  message,
   setCount,
   count,
   setAnswerList,
 }: MessageProps) {
   const { handleGetQuestion, handlePostAnswer } = useChat();
 
-  const isSystemMessage = chat.sender === "system";
+  const isSystemMessage = message.MESSAGE.sender === "system";
   const containerClasses = cn(
     "items-top flex space-x-1.5",
-    chat.sender === "user" ? "flex-row-reverse" : "flex-row",
-    chat.sender,
+    message.MESSAGE.sender === "user" ? "flex-row-reverse" : "flex-row",
+    message.MESSAGE.sender,
   );
 
   return (
@@ -50,16 +48,16 @@ export default function Message({
       <div
         className={cn(
           "my-2 flex flex-col justify-center space-y-2 rounded-xl p-4",
-          chat.sender === "user"
+          message.MESSAGE.sender === "user"
             ? "bg-black text-white"
             : "bg-[#88888840] text-black",
         )}
       >
-        <p className="text-sm">{chat.content}</p>
-        {chat.questionId && (
+        <p className="text-sm">{message.MESSAGE.content}</p>
+        {message.QUESTION && (
           <>
             <div className="max-w-1/4 flex flex-col text-sm">
-              {chat.options?.map(
+              {message.options?.map(
                 (option, idx) =>
                   option && (
                     <p key={idx}>
@@ -69,7 +67,7 @@ export default function Message({
               )}
             </div>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {chat.options?.map(
+              {message.options?.map(
                 (option, idx) =>
                   option && (
                     <Button
@@ -79,7 +77,10 @@ export default function Message({
                         e.preventDefault();
                         await handlePostAnswer({ answer: `Option ${idx + 1}` });
                         setCount((prev) => prev + 1);
-                        setAnswerList((prev) => [...prev, chat.options[idx]]);
+                        setAnswerList((prev) => [
+                          ...prev,
+                          message.options[idx],
+                        ]);
                         if (count + 1 < 3) await handleGetQuestion();
                       }}
                     >

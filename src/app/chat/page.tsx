@@ -6,6 +6,7 @@ import { desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { bookTable, messageTable, questionTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
+import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 
 import MessageList from "./_components/MessageList";
 
@@ -17,7 +18,7 @@ export default async function ChatPage() {
     redirect("/");
   }
 
-  const messageData = await db
+  const rawMessageList = await db
     .select()
     .from(messageTable)
     .leftJoin(questionTable, eq(messageTable.questionId, questionTable.id))
@@ -26,25 +27,13 @@ export default async function ChatPage() {
     .limit(10)
     .orderBy(desc(messageTable.createdAt));
 
-  const transformedMessageData: Array<{
-    id: number;
-    userId: number;
-    content: string;
-    sender: "system" | "user";
-    createdAt: Date;
-    questionId: number | null;
-    bookId: number | null;
-    bookName?: string | null;
+  const messageList: Array<{
+    MESSAGE: SelectMessage;
+    BOOK: SelectBook | null;
+    QUESTION: SelectQuestion | null;
     options: string[];
-  }> = messageData.map((message) => ({
-    id: message.MESSAGE.id,
-    userId: message.MESSAGE.userId,
-    content: message.MESSAGE.content,
-    sender: message.MESSAGE.sender,
-    createdAt: message.MESSAGE.createdAt,
-    questionId: message.MESSAGE.questionId,
-    bookId: message.MESSAGE.bookId,
-    bookName: message.PICBOOK?.bookName,
+  }> = rawMessageList.map((message) => ({
+    ...message,
     options: [
       message.QUESTION?.option1,
       message.QUESTION?.option2,
@@ -66,7 +55,7 @@ export default async function ChatPage() {
             {date}
           </p>
 
-          <MessageList messageList={transformedMessageData}></MessageList>
+          <MessageList messageList={messageList}></MessageList>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { eq } from "drizzle-orm";
 
 import { db } from "@/db";
-import { bookTable, favouritesTable } from "@/db/schema";
+import { bookTable, favouriteTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 import Book from "./_components/Book";
@@ -16,15 +16,10 @@ export default async function SavesPage() {
   }
 
   const books = await db
-    .select({
-      bookName: bookTable.bookName,
-      author: bookTable.author,
-      publishDate: bookTable.publishDate,
-      topics: bookTable.topics,
-    })
-    .from(favouritesTable)
-    .leftJoin(bookTable, eq(favouritesTable.bookId, bookTable.id))
-    .where(eq(favouritesTable.userId, session.user.id))
+    .select()
+    .from(favouriteTable)
+    .innerJoin(bookTable, eq(favouriteTable.bookId, bookTable.id))
+    .where(eq(favouriteTable.userId, session.user.id))
     .execute();
 
   return (

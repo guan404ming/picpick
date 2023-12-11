@@ -6,17 +6,22 @@ import picPick from "@/assets/pic-pick.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import useChat from "@/hooks/useChat";
-import type { Book } from "@/lib/types/db";
+import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 
 type ResultMessageProps = {
-  book: Book | undefined;
+  message: {
+    MESSAGE: SelectMessage;
+    BOOK: SelectBook | null;
+    QUESTION: SelectQuestion | null;
+    options: string[];
+  };
 };
 
-export default function ResultMessage({ book }: ResultMessageProps) {
+export default function ResultMessage({ message }: ResultMessageProps) {
   const { handleGetQuestion } = useChat();
 
   return (
-    book && (
+    message.BOOK && (
       <div className={"items-top flex flex-row space-x-1.5"}>
         <Avatar className="mr-2 mt-2 h-6 w-6 [.other:has(+.other)>&]:opacity-0">
           <AvatarImage src={picPick.src} alt="pic-pick" />
@@ -31,10 +36,10 @@ export default function ResultMessage({ book }: ResultMessageProps) {
           <p className="text-sm">Here is our recommendation: </p>
           <div>
             <span>Book Name: </span>
-            <span>{book.bookName}</span>
+            <span>{message.BOOK.bookName}</span>
           </div>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <Link href={`/book/${book.id}`}>
+            <Link href={`/message/${message.BOOK.id}`}>
               <Button className="block w-full" size="lg">
                 Read
               </Button>

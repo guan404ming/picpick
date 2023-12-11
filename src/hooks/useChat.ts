@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 // import { publicEnv } from "@/lib/env/public";
 import bookList from "@/assets/book.json";
-import type { Book } from "@/lib/types/db";
+import type { SelectBook } from "@/lib/types/db";
 
 export default function useChat() {
   const [loading, setLoading] = useState(false);
@@ -34,7 +34,7 @@ export default function useChat() {
     console.log(answer);
     setLoading(false);
 
-    const res: Book = bookList[0];
+    const res: SelectBook = bookList[0];
 
     return res;
   };

@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { db } from "@/db";
-import { bookTable, favouritesTable } from "@/db/schema";
+import { bookTable, favouriteTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 const addFavoriteRequestSchema = z.object({
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
       .where(eq(bookTable.bookId, bookId));
 
     await db
-      .insert(favouritesTable)
+      .insert(favouriteTable)
       .values({
         userId: session.user.id,
         bookId: book.id,
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   try {
     const { favouriteId } = await request.json();
-    await db.delete(favouritesTable).where(eq(favouritesTable.id, favouriteId));
+    await db.delete(favouriteTable).where(eq(favouriteTable.id, favouriteId));
   } catch (error) {
     console.log(error);
     return NextResponse.json(
@@ -85,9 +85,9 @@ export async function PATCH(request: NextRequest) {
       );
 
     await db
-      .update(favouritesTable)
+      .update(favouriteTable)
       .set({ bookmark: bookmark })
-      .where(eq(favouritesTable.id, favouriteId));
+      .where(eq(favouriteTable.id, favouriteId));
   } catch (error) {
     console.log(error);
     return NextResponse.json(

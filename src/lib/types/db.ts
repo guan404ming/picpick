@@ -1,31 +1,22 @@
-export type Book = {
-  id: number;
-  author?: string;
-  publishDate?: string;
-  topics?: string;
-  publisher?: string;
-  language?: string;
-  bookId?: string;
-  bookName: string;
-  epubLink?: string;
-  pdfLink?: string;
-};
+import type {
+  bookTable,
+  favouriteTable,
+  messageTable,
+  questionTable,
+} from "@/db/schema";
 
-export type Question = {
-  id: number;
-  question: string;
-  option1: string | null;
-  option2: string | null;
-  option3: string | null;
-  option4: string | null;
-};
+export type SelectBook = typeof bookTable.$inferSelect;
 
-export type Message = {
-  content: string;
-  sender: "system" | "user";
-  questionId: number | null;
-  id: number;
-  bookId: number | null;
-  userId: number;
-  createdAt: Date;
-};
+export type InsertBook = typeof bookTable.$inferInsert;
+
+export type InsertQuestion = typeof questionTable.$inferSelect;
+
+export type SelectQuestion = typeof questionTable.$inferSelect;
+
+export type InsertMessage = typeof messageTable.$inferInsert;
+
+export type SelectMessage = typeof messageTable.$inferSelect;
+
+export type SelectFavourite = typeof favouriteTable.$inferSelect;
+
+export type InsertFavourite = typeof favouriteTable.$inferInsert;

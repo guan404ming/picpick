@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import useChat from "@/hooks/useChat";
+import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 
 import GreetingMessage from "./GreetingMessage";
 import Message from "./Message";
@@ -12,14 +13,9 @@ import ResultMessage from "./ResultMessage";
 
 type MessageListProps = {
   messageList: {
-    id: number;
-    userId: number;
-    content: string;
-    sender: "system" | "user";
-    createdAt: Date;
-    questionId: number | null;
-    bookId: number | null;
-    bookName?: string | null;
+    MESSAGE: SelectMessage;
+    BOOK: SelectBook | null;
+    QUESTION: SelectQuestion | null;
     options: string[];
   }[];
 };
@@ -55,19 +51,17 @@ export default function MessageList({ messageList }: MessageListProps) {
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
       {count}
       {messageList.length === 0 && <GreetingMessage />}
-      {messageList.map((chat) => (
-        <div key={chat.id}>
-          {!chat.bookId ? (
+      {messageList.map((message) => (
+        <div key={message.MESSAGE.id}>
+          {!message.BOOK ? (
             <Message
               count={count}
               setAnswerList={setAnswerList}
               setCount={setCount}
-              chat={chat}
+              message={message}
             />
           ) : (
-            <ResultMessage
-              book={{ id: chat.bookId, bookName: chat.bookName! }}
-            />
+            <ResultMessage message={message} />
           )}
         </div>
       ))}
