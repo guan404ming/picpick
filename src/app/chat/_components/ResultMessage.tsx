@@ -1,11 +1,14 @@
 "use client";
 
+import { useState } from "react";
+
 import Link from "next/link";
 
+import BookDialogContent from "@/app/saves/_components/BookDialogContent";
 import picPick from "@/assets/pic-pick.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import useChat from "@/hooks/useChat";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 
 type ResultMessageProps = {
@@ -18,8 +21,14 @@ type ResultMessageProps = {
 };
 
 export default function ResultMessage({ message }: ResultMessageProps) {
-  const { handleGetQuestion } = useChat();
-
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const handleOpenChange = (open: boolean) => {
+    if (open) {
+      setDialogOpen(true);
+    } else {
+      setDialogOpen(false);
+    }
+  };
   return (
     message.BOOK && (
       <div className={"items-top flex flex-row space-x-1.5"}>
@@ -39,22 +48,18 @@ export default function ResultMessage({ message }: ResultMessageProps) {
             <span>{message.BOOK.bookName}</span>
           </div>
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <Link href={`/message/${message.BOOK.id}`}>
+            <Link href={`/book/${message.BOOK.id}`}>
               <Button className="block w-full" size="lg">
                 Read
               </Button>
             </Link>
 
-            <Button
-              className="block"
-              size="lg"
-              onClick={async (e) => {
-                e.preventDefault();
-                await handleGetQuestion();
-              }}
-            >
-              More
-            </Button>
+            <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>
+              <DialogTrigger className="disabled:opacity-50, inline-flex h-11 items-center justify-center whitespace-nowrap rounded-md rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground ring-offset-background transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none">
+                More
+              </DialogTrigger>
+              <BookDialogContent book={message.BOOK}></BookDialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
