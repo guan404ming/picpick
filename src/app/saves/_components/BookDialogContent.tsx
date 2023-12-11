@@ -1,11 +1,16 @@
+import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { Bookmark } from "lucide-react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { DialogContent } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
+import useFavourite from "@/hooks/useFavourite";
+import useUserInfo from "@/hooks/useUserInfo";
 import type { SelectBook } from "@/lib/types/db";
 
 type BookDialogContentProps = {
@@ -13,12 +18,39 @@ type BookDialogContentProps = {
 };
 
 export default function Book({ book }: BookDialogContentProps) {
+  const { getFavourite, postFavourite } = useFavourite();
+  const { session } = useUserInfo();
+  const router = useRouter();
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      if (session) {
+        const favouriteList = await getFavourite({ userId: session.user.id });
+        const isSaved =
+          favouriteList === undefined ||
+          favouriteList.filter((i) => i.userId === session.user.id).length ===
+            0;
+        setSaved(!isSaved);
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
+
   return (
     <DialogContent className="flex max-w-[80%] justify-between p-12 max-md:p-10 max-sm:flex-col max-sm:text-xs sm:min-w-[90%] sm:space-x-4 md:min-w-[70%] md:space-x-10 lg:min-w-[46%] lg:max-w-[46%]">
       <div className="space-y-5">
         <div className="mb-2 flex items-start justify-between font-bold max-sm:items-center">
           <p>{book.bookName}</p>
-          <Bookmark className="ml-2 max-sm:w-4"></Bookmark>
+          <Bookmark
+            onClick={() => {
+              postFavourite({ bookId: book.id });
+              setSaved(!saved);
+              router.refresh();
+            }}
+            className="ml-2 cursor-pointer max-sm:w-4"
+            fill={saved ? "true" : "none"}
+          ></Bookmark>
         </div>
         <div className="flex flex-col space-y-3">
           <div className="grid w-full grid-cols-2">

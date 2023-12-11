@@ -1,15 +1,15 @@
 import { getServerSession } from "next-auth";
 import { NextResponse, type NextRequest } from "next/server";
 
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { db } from "@/db";
-import { bookTable, favouriteTable } from "@/db/schema";
+import { favouriteTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 const addFavoriteRequestSchema = z.object({
-  bookId: z.string(),
+  bookId: z.number(),
 });
 
 type addFavoriteRequest = z.infer<typeof addFavoriteRequestSchema>;
@@ -29,19 +29,32 @@ export async function POST(request: NextRequest) {
     const session = await getServerSession(authOptions);
     if (!session?.user?.email) throw Error("No session!");
 
-    const [book] = await db
+    const [record] = await db
       .select()
-      .from(bookTable)
-      .where(eq(bookTable.bookId, bookId));
-
-    await db
-      .insert(favouriteTable)
-      .values({
-        userId: session.user.id,
-        bookId: book.id,
-      })
-      .onConflictDoNothing()
+      .from(favouriteTable)
+      .where(
+        and(
+          eq(favouriteTable.bookId, bookId),
+          eq(favouriteTable.userId, session.user.id),
+        ),
+      )
       .execute();
+
+    if (record) {
+      await db
+        .delete(favouriteTable)
+        .where(eq(favouriteTable.id, record.id))
+        .execute();
+    } else {
+      await db
+        .insert(favouriteTable)
+        .values({
+          userId: session.user.id,
+          bookId: bookId,
+        })
+        .onConflictDoNothing()
+        .execute();
+    }
   } catch (error) {
     console.log(error);
     return NextResponse.json(
