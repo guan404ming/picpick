@@ -49,7 +49,7 @@ export default function Message({
 
       <div
         className={cn(
-          "my-2 flex flex-col justify-center space-x-2 space-y-2 rounded-xl p-4",
+          "my-2 flex flex-col justify-center space-y-2 rounded-xl p-4",
           chat.sender === "user"
             ? "bg-black text-white"
             : "bg-[#88888840] text-black",
@@ -74,7 +74,6 @@ export default function Message({
                   option && (
                     <Button
                       className="block"
-                      size="lg"
                       key={idx}
                       onClick={async (e) => {
                         e.preventDefault();

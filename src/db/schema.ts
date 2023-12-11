@@ -35,7 +35,7 @@ export const favouritesTable = pgTable("FAVOURITES", {
 
 export const bookTable = pgTable("PICBOOK", {
   id: serial("id").primaryKey().unique(),
-  bookId: varchar("book_id", { length: 256 }),
+  bookId: varchar("book_id", { length: 256 }).unique(),
   bookName: varchar("book_name", { length: 256 }).notNull(),
   pdfLink: varchar("pdf_link", { length: 512 }),
   epubLink: varchar("epub_link", { length: 512 }).notNull(),

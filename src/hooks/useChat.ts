@@ -2,7 +2,8 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-import { publicEnv } from "@/lib/env/public";
+// import { publicEnv } from "@/lib/env/public";
+import bookList from "@/assets/book.json";
 
 export default function useChat() {
   const [loading, setLoading] = useState(false);
@@ -13,25 +14,26 @@ export default function useChat() {
 
     setLoading(true);
 
-    const res = await fetch(
-      `${publicEnv.NEXT_PUBLIC_MODEL_BASE_URL}/predictions/dpr`,
-      {
-        method: "POST",
-        body: answer,
-      },
-    );
+    // const res = await fetch(
+    //   `${publicEnv.NEXT_PUBLIC_MODEL_BASE_URL}/predictions/dpr`,
+    //   {
+    //     method: "POST",
+    //     body: answer,
+    //   },
+    // );
 
-    if (!res.ok) {
-      return;
-    }
+    // if (!res.ok) {
+    //   return;
+    // }
 
-    const body: {
-      id: string;
-    } = await res.json();
+    // const body: {
+    //   id: string;
+    // } = await res.json();
 
+    console.log(answer);
     setLoading(false);
 
-    return body;
+    return bookList[0];
   };
 
   const postMessage = async ({

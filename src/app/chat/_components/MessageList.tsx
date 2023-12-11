@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import useChat from "@/hooks/useChat";
 
 import Message from "./Message";
+import ResultMessage from "./ResultMessage";
 
 type MessageProps = {
   messageList: {
@@ -23,19 +24,28 @@ type MessageProps = {
 export default function MessageList({ messageList }: MessageProps) {
   const [count, setCount] = useState(0);
   const [answerList, setAnswerList] = useState<string[]>([]);
+  const [book, setBook] = useState<{
+    author?: string;
+    publishDate?: string;
+    topics?: string;
+    publisher?: string;
+    language: string;
+    bookId: string;
+    bookName: string;
+    epubLink: string;
+    pdfLink: string;
+  }>();
   const router = useRouter();
-  const { postMessage } = useChat();
+  const { postMessage, getBook } = useChat();
 
   useEffect(() => {
     (async () => {
       if (count === 3) {
-        await postMessage({
-          content: answerList.join("\n"),
-          sender: "system",
-          questionId: null,
-        });
+        const book_ = await getBook({ answer: answerList.join(" ") });
+        setBook(book_);
         router.refresh();
         setCount(0);
+        setAnswerList([]);
       }
     })();
   }, [answerList, count, postMessage, router]);
@@ -43,6 +53,7 @@ export default function MessageList({ messageList }: MessageProps) {
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
       {count}
+      <ResultMessage book={book}></ResultMessage>
       {messageList.length === 0 && (
         <Message
           setAnswerList={setAnswerList}
