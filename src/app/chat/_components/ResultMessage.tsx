@@ -4,39 +4,22 @@ import picPick from "@/assets/pic-pick.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import useChat from "@/hooks/useChat";
-import { cn } from "@/lib/utils";
+import type { Book } from "@/lib/types/db";
 
 type ResultMessageProps = {
-  book:
-    | {
-        author?: string;
-        publishDate?: string;
-        topics?: string;
-        publisher?: string;
-        language: string;
-        bookId: string;
-        bookName: string;
-        epubLink: string;
-        pdfLink: string;
-      }
-    | undefined;
+  book: Book | undefined;
 };
 
 export default function ResultMessage({ book }: ResultMessageProps) {
   const { handleGetQuestion } = useChat();
 
-  const isSystemMessage = true;
-  const containerClasses = cn("items-top flex space-x-1.5", "flex-row");
-
   return (
     book && (
-      <div className={containerClasses}>
-        {isSystemMessage && (
-          <Avatar className="mr-2 mt-2 h-6 w-6 [.other:has(+.other)>&]:opacity-0">
-            <AvatarImage src={picPick.src} alt="pic-pick" />
-            <AvatarFallback />
-          </Avatar>
-        )}
+      <div className={"items-top flex flex-row space-x-1.5"}>
+        <Avatar className="mr-2 mt-2 h-6 w-6 [.other:has(+.other)>&]:opacity-0">
+          <AvatarImage src={picPick.src} alt="pic-pick" />
+          <AvatarFallback />
+        </Avatar>
 
         <div
           className={

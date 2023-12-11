@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import useChat from "@/hooks/useChat";
+import type { Book } from "@/lib/types/db";
 
 import Message from "./Message";
 import ResultMessage from "./ResultMessage";
@@ -24,17 +25,7 @@ type MessageProps = {
 export default function MessageList({ messageList }: MessageProps) {
   const [count, setCount] = useState(0);
   const [answerList, setAnswerList] = useState<string[]>([]);
-  const [book, setBook] = useState<{
-    author?: string;
-    publishDate?: string;
-    topics?: string;
-    publisher?: string;
-    language: string;
-    bookId: string;
-    bookName: string;
-    epubLink: string;
-    pdfLink: string;
-  }>();
+  const [book, setBook] = useState<Book>();
   const router = useRouter();
   const { postMessage, getBook } = useChat();
 
@@ -48,7 +39,7 @@ export default function MessageList({ messageList }: MessageProps) {
         setAnswerList([]);
       }
     })();
-  }, [answerList, count, postMessage, router]);
+  }, [answerList, count, getBook, postMessage, router]);
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">

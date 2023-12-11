@@ -11,7 +11,7 @@ export default function TestPage() {
 
   async function handleGetBook() {
     const book = await getBook({ answer: "I need book" });
-    setBookId(`${book?.id}`);
+    setBookId(`${book?.bookId}`);
   }
 
   return (
