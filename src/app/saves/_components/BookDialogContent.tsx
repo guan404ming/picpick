@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 
 import Image from "next/image";
@@ -15,27 +16,23 @@ import type { SelectBook } from "@/lib/types/db";
 
 type BookDialogContentProps = {
   book: SelectBook;
+  dep?: boolean;
+  setDep?: Dispatch<SetStateAction<boolean>>;
 };
 
-export default function Book({ book }: BookDialogContentProps) {
-  const { getFavourite, postFavourite } = useFavourite();
+export default function Book({ book, dep, setDep }: BookDialogContentProps) {
+  const { postFavourite } = useFavourite();
   const { session } = useUserInfo();
-  const router = useRouter();
+  const { getIsFavourited } = useFavourite();
   const [saved, setSaved] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     (async () => {
-      if (session) {
-        const favouriteList = await getFavourite({ userId: session.user.id });
-        const isSaved =
-          favouriteList === undefined ||
-          favouriteList.filter((i) => i.userId === session.user.id).length ===
-            0;
-        setSaved(!isSaved);
-      }
+      setSaved(await getIsFavourited({ bookId: book.id }));
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
+  }, [session, dep]);
 
   return (
     <DialogContent className="flex max-w-[80%] justify-between p-12 max-md:p-10 max-sm:flex-col max-sm:text-xs sm:min-w-[90%] sm:space-x-4 md:min-w-[70%] md:space-x-10 lg:min-w-[46%] lg:max-w-[46%]">
@@ -45,11 +42,15 @@ export default function Book({ book }: BookDialogContentProps) {
           <Bookmark
             onClick={() => {
               postFavourite({ bookId: book.id });
-              setSaved(!saved);
-              router.refresh();
+              if (dep !== undefined && setDep) {
+                setDep(!dep);
+              } else {
+                setSaved(!saved);
+                router.refresh();
+              }
             }}
             className="ml-2 cursor-pointer max-sm:w-4"
-            fill={saved ? "true" : "none"}
+            fill={(dep !== undefined ? dep : saved) ? "true" : "none"}
           ></Bookmark>
         </div>
         <div className="flex flex-col space-y-3">

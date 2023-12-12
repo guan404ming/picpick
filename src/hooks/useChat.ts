@@ -34,7 +34,8 @@ export default function useChat() {
     console.log(answer);
     setLoading(false);
 
-    const res: SelectBook = bookList[0];
+    const res: SelectBook =
+      bookList[Math.floor(Math.random() * bookList.length)];
 
     return res;
   };

@@ -2,8 +2,11 @@ import { useState } from "react";
 
 import type { SelectFavourite } from "@/lib/types/db";
 
+import useUserInfo from "./useUserInfo";
+
 export default function useFavourite() {
   const [loading, setLoading] = useState(false);
+  const { session } = useUserInfo();
 
   const postFavourite = async ({ bookId }: { bookId: number }) => {
     if (loading) return;
@@ -42,9 +45,26 @@ export default function useFavourite() {
     return bookList;
   };
 
+  const getIsFavourited = async ({ bookId }: { bookId: number }) => {
+    setLoading(true);
+
+    if (session) {
+      const favouriteList = await getFavourite({ userId: session.user.id });
+      if (favouriteList) {
+        const isSaved =
+          favouriteList.filter((i) => i.bookId === bookId).length > 0;
+        return isSaved;
+      }
+    }
+
+    setLoading(false);
+    return false;
+  };
+
   return {
     postFavourite,
     getFavourite,
+    getIsFavourited,
     loading,
   };
 }

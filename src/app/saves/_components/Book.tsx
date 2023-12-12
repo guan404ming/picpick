@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import Image from "next/image";
 
 import { Bookmark } from "lucide-react";
@@ -14,6 +16,7 @@ import {
 } from "@/components/ui/card";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
+import useFavourite from "@/hooks/useFavourite";
 import type { SelectFavourite, SelectBook } from "@/lib/types/db";
 
 import BookDialogContent from "./BookDialogContent";
@@ -26,13 +29,24 @@ type BookProps = {
 };
 
 export default function Book({ book }: BookProps) {
+  const [saved, setSaved] = useState(true);
+  const { postFavourite } = useFavourite();
+
   return (
     <Dialog>
       <Card className="w-[300px] text-center drop-shadow max-sm:w-[200px]">
         <CardHeader>
           <CardTitle className="text-md mb-2 flex justify-between">
             <p className="max-w-[80%] truncate">{book.BOOK.bookName}</p>
-            <Bookmark className="cursor-pointer" width={20} />
+            <Bookmark
+              onClick={() => {
+                postFavourite({ bookId: book.BOOK.id });
+                setSaved(!saved);
+              }}
+              className="cursor-pointer"
+              width={20}
+              fill={saved ? "true" : "none"}
+            ></Bookmark>
           </CardTitle>
         </CardHeader>
         <DialogTrigger>
@@ -56,7 +70,11 @@ export default function Book({ book }: BookProps) {
         </CardFooter>
       </Card>
 
-      <BookDialogContent book={book.BOOK}></BookDialogContent>
+      <BookDialogContent
+        book={book.BOOK}
+        dep={saved}
+        setDep={setSaved}
+      ></BookDialogContent>
     </Dialog>
   );
 }

@@ -39,13 +39,15 @@ export async function POST(request: NextRequest) {
         ),
       )
       .execute();
-
+    console.log(bookId, record);
     if (record) {
+      console.log("DELETE");
       await db
         .delete(favouriteTable)
         .where(eq(favouriteTable.id, record.id))
         .execute();
     } else {
+      console.log("INSERT");
       await db
         .insert(favouriteTable)
         .values({

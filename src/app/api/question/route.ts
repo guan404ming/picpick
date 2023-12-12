@@ -7,8 +7,7 @@ export async function GET() {
   try {
     const questions = await db.select().from(questionTable);
     const randomIndex = Math.floor(Math.random() * questions.length);
-    const item = questions[randomIndex];
-    return NextResponse.json(item);
+    return NextResponse.json(questions[randomIndex]);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
