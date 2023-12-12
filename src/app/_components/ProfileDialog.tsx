@@ -52,7 +52,7 @@ export default function ProfileDialog() {
         </div>
       </DialogTrigger>
 
-      <DialogContent>
+      <DialogContent className="max-sm:max-w-[70%]">
         <DialogHeader>
           <DialogTitle>Welcome to PicPick!</DialogTitle>
           <DialogDescription>Sign in to pick all Picbooks~~</DialogDescription>
