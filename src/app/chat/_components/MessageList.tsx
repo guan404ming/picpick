@@ -72,7 +72,6 @@ export default function MessageList({ messageList }: MessageListProps) {
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
-      {count}
       {messageList.map((message) => (
         <div key={message.MESSAGE.id}>
           {!message.BOOK ? (

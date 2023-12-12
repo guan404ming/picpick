@@ -25,12 +25,12 @@ export default function useFavourite() {
     setLoading(false);
   };
 
-  const getFavourite = async ({ userId }: { userId: number }) => {
+  const getFavourite = async () => {
     if (loading) return;
 
     setLoading(true);
 
-    const res = await fetch(`/api/favourite/${userId}`, {
+    const res = await fetch(`/api/favourite/${session?.user.id}`, {
       method: "GET",
     });
 
@@ -49,7 +49,7 @@ export default function useFavourite() {
     setLoading(true);
 
     if (session) {
-      const favouriteList = await getFavourite({ userId: session.user.id });
+      const favouriteList = await getFavourite();
       if (favouriteList) {
         const isSaved =
           favouriteList.filter((i) => i.bookId === bookId).length > 0;
