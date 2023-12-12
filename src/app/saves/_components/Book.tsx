@@ -53,7 +53,7 @@ export default function Book({ book }: BookProps) {
           <CardContent className="w-[250px] cursor-pointer max-sm:w-[150px]">
             <AspectRatio ratio={4 / 5} className="bg-muted">
               <Image
-                src={"/book1.jpg"}
+                src={`https://firebasestorage.googleapis.com/v0/b/quiztory-f5e09.appspot.com/o/cover%2F${book.BOOK.bookId}.jpg?alt=media`}
                 alt="Photo by Drew Beamer"
                 fill
                 sizes={"250"}

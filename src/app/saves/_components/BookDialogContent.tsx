@@ -73,7 +73,7 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
         <Link href={"/book/123"}>
           <AspectRatio ratio={4 / 5} className="bg-muted">
             <Image
-              src={"/book1.jpg"}
+              src={`https://firebasestorage.googleapis.com/v0/b/quiztory-f5e09.appspot.com/o/cover%2F${book.bookId}.jpg?alt=media`}
               alt="Photo by Drew Beamer"
               fill
               sizes={"100"}

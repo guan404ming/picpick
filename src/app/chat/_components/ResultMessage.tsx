@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import BookDialogContent from "@/app/saves/_components/BookDialogContent";
 import picPick from "@/assets/pic-pick.png";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
@@ -29,9 +31,14 @@ export default function ResultMessage({ message }: ResultMessageProps) {
       setDialogOpen(false);
     }
   };
+
   return (
     message.BOOK && (
-      <div className={"items-top flex flex-row space-x-1.5"}>
+      <div
+        className={
+          "items-top flex w-[250px] flex-row space-x-1.5 max-sm:w-[150px]"
+        }
+      >
         <Avatar className="mr-2 mt-2 h-6 w-6 [.other:has(+.other)>&]:opacity-0">
           <AvatarImage src={picPick.src} alt="pic-pick" />
           <AvatarFallback />
@@ -47,6 +54,18 @@ export default function ResultMessage({ message }: ResultMessageProps) {
             <span>Book Name: </span>
             <span>{message.BOOK.bookName}</span>
           </div>
+          <div className="w-[250px] cursor-pointer max-sm:w-[150px]">
+            <AspectRatio ratio={4 / 5} className="bg-muted">
+              <Image
+                src={`https://firebasestorage.googleapis.com/v0/b/quiztory-f5e09.appspot.com/o/cover%2F${message.BOOK.bookId}.jpg?alt=media`}
+                alt="Photo by Drew Beamer"
+                fill
+                sizes={"250"}
+                className="rounded-md object-cover"
+              />
+            </AspectRatio>
+          </div>
+
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
             <Link href={`/book/${message.BOOK.id}`}>
               <Button className="block w-full" size="lg">
