@@ -3,20 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { Home, Bot, Bookmark } from "lucide-react";
+import { Home, Bot, Bookmark, UserCog } from "lucide-react";
 
 import picPick from "@/assets/pic-pick.png";
 import { Separator } from "@/components/ui/separator";
+import useUserInfo from "@/hooks/useUserInfo";
 import { cn } from "@/lib/utils";
 
 import ProfileDialog from "./ProfileDialog";
 
 export default function Sider() {
+  const { session } = useUserInfo();
+
   return (
     <aside
-      className={` flex h-screen flex-col justify-between bg-[#F0F0F0] px-6 py-6 text-center dark:bg-slate-800 max-md:px-1 max-md:py-2`}
+      className={`flex h-screen flex-col justify-between bg-[#F0F0F0] px-4 py-6 text-center dark:bg-slate-800 max-md:px-1 max-md:py-2`}
     >
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col">
         <div className="mb-2 p-2">
           <Link href="/">
             <Image src={picPick} alt="pic-pick" width={40} height={40} />
@@ -25,6 +28,9 @@ export default function Sider() {
         <SiderButton Icon={Home} text="Home" router="/" />
         <SiderButton Icon={Bot} text="Chat" router="/chat" />
         <SiderButton Icon={Bookmark} text="Saves" router="/saves" />
+        {session?.user.role === "admin" && (
+          <SiderButton Icon={UserCog} text="Admin" router="/admin" />
+        )}
         <Separator className="my-2" />
         <ProfileDialog />
       </div>

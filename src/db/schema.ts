@@ -14,6 +14,9 @@ export const userTable = pgTable(
     id: serial("id").primaryKey(),
     email: varchar("email", { length: 50 }).notNull().unique(),
     name: varchar("name", { length: 50 }).notNull(),
+    role: varchar("role", { enum: ["normal", "admin"] })
+      .notNull()
+      .default("normal"),
   },
   (table) => ({
     emailIndex: index("email_index").on(table.email),

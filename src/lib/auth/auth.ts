@@ -35,6 +35,7 @@ export const authOptions: NextAuthOptions = {
         .where(eq(userTable.email, session.user.email!));
 
       session.user.id = user.id;
+      session.user.role = user.role;
 
       return session;
     },
