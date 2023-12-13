@@ -35,6 +35,10 @@ export default function MessageList({ messageList }: MessageListProps) {
     (async () => {
       if (messageList) {
         effectRan.current = true;
+        if (messageList.length === 0) {
+          await handleGreet();
+          return;
+        }
         const isGreeting = !messageList[0].QUESTION && !messageList[0].BOOK;
         if (count === 0 && !isGreeting) {
           await handleGreet();
