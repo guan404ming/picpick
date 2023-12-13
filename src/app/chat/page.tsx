@@ -1,8 +1,11 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
+import dayjs from "dayjs";
 import { desc, eq } from "drizzle-orm";
 
+import picPick from "@/assets/pic-pick.png";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { db } from "@/db";
 import { bookTable, messageTable, questionTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
@@ -11,7 +14,6 @@ import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 import MessageList from "./_components/MessageList";
 
 export default async function ChatPage() {
-  const date = "Today, 12/01";
   const session = await getServerSession(authOptions);
 
   if (!session?.user.id) {
@@ -44,15 +46,18 @@ export default async function ChatPage() {
 
   return (
     <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
-      <div className="w-2/3 min-w-[300px] overflow-y-auto rounded-xl bg-white shadow-md">
-        <div className="flex w-full items-center justify-start px-8 py-3 shadow">
-          <span className="chatbot-icon">ICON</span>
+      <div className="relative w-2/3 min-w-[300px] overflow-y-auto rounded-xl bg-white shadow-md">
+        <div className="sticky left-0 right-0 top-0 z-50 flex w-full items-center justify-start bg-white px-7 py-3 shadow">
+          <Avatar className="h-8 w-8">
+            <AvatarImage src={picPick.src} alt="pic-pick" />
+            <AvatarFallback />
+          </Avatar>
           <span className="p-4 text-xl">PicPick</span>
         </div>
 
         <div className="p-8">
           <p className="mx-[auto] mb-8 max-w-[100px] rounded-full bg-gray-200 px-2.5 py-1 text-center text-xs">
-            {date}
+            {`Today, ${dayjs(new Date()).format("MM/DD")}`}
           </p>
 
           <MessageList messageList={messageList}></MessageList>
