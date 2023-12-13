@@ -109,11 +109,35 @@ export default function useChat() {
     return body;
   };
 
+  const handleGreet = async () => {
+    await postMessage({
+      content: "Greeting!",
+      sender: "system",
+      questionId: null,
+      bookId: null,
+    });
+    router.refresh();
+  };
+
+  const handleGetResult = async ({ answerList }: { answerList: string[] }) => {
+    const book_ = getBook({ answer: answerList.join(" ") });
+    if (book_?.id) {
+      await postMessage({
+        content: "Recommendation",
+        sender: "system",
+        questionId: null,
+        bookId: book_.id,
+      });
+    }
+
+    router.refresh();
+  };
+
   return {
-    getBook,
-    postMessage,
     handlePostAnswer,
     handleGetQuestion,
+    handleGetResult,
+    handleGreet,
     loading,
   };
 }

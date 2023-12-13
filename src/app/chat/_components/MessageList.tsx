@@ -24,7 +24,7 @@ export default function MessageList({ messageList }: MessageListProps) {
   const [count, setCount] = useState(0);
   const [answerList, setAnswerList] = useState<string[]>([]);
   const router = useRouter();
-  const { getBook, postMessage } = useChat();
+  const { handleGreet, handleGetResult } = useChat();
   const effectRan = useRef(false);
 
   useEffect(() => {
@@ -37,38 +37,22 @@ export default function MessageList({ messageList }: MessageListProps) {
         effectRan.current = true;
         const isGreeting = !messageList[0].QUESTION && !messageList[0].BOOK;
         if (count === 0 && !isGreeting) {
-          await postMessage({
-            content: "Greeting!",
-            sender: "system",
-            questionId: null,
-            bookId: null,
-          });
-          router.refresh();
+          handleGreet();
         }
       }
     })();
-  }, [count, messageList, postMessage, router]);
+  }, [count, messageList, router]);
 
   useEffect(() => {
     (async () => {
       if (count === 3) {
-        const book_ = getBook({ answer: answerList.join(" ") });
-        if (book_?.id) {
-          await postMessage({
-            content: "Recommendation",
-            sender: "system",
-            questionId: null,
-            bookId: book_.id,
-          });
-        }
-
-        router.refresh();
+        handleGetResult({ answerList });
         setCount(0);
         effectRan.current = false;
         setAnswerList([]);
       }
     })();
-  }, [answerList, count, getBook, postMessage, router]);
+  }, [answerList, count, router]);
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
