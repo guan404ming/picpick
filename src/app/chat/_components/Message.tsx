@@ -50,7 +50,7 @@ export default function Message({
           "my-2 flex flex-col justify-center space-y-2 rounded-xl p-4",
           message.MESSAGE.sender === "user"
             ? "bg-black text-white"
-            : "bg-[#88888840] text-black",
+            : "bg-[#88888840] text-black dark:text-white",
         )}
       >
         <p className="text-sm">{message.MESSAGE.content}</p>

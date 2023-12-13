@@ -46,7 +46,7 @@ export default function ResultMessage({ message }: ResultMessageProps) {
 
         <div
           className={
-            "my-2 flex flex-col justify-center space-y-2 rounded-xl bg-[#88888840] p-4 text-black"
+            "my-2 flex flex-col justify-center space-y-2 rounded-xl bg-[#88888840] p-4 text-black dark:text-white"
           }
         >
           <p className="text-sm">Here is our recommendation: </p>

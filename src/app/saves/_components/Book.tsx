@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { useTheme } from "next-themes";
 import Image from "next/image";
 
 import { Bookmark } from "lucide-react";
@@ -31,6 +32,7 @@ type BookProps = {
 export default function Book({ book }: BookProps) {
   const [saved, setSaved] = useState(true);
   const { postFavourite } = useFavourite();
+  const { theme } = useTheme();
 
   return (
     <Dialog>
@@ -45,7 +47,7 @@ export default function Book({ book }: BookProps) {
               }}
               className="cursor-pointer"
               width={20}
-              fill={saved ? "true" : "none"}
+              fill={saved ? (theme === "dark" ? "white" : "true") : "none"}
             ></Bookmark>
           </CardTitle>
         </CardHeader>

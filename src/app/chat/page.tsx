@@ -45,9 +45,9 @@ export default async function ChatPage() {
   }));
 
   return (
-    <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10">
-      <div className="relative w-2/3 min-w-[300px] overflow-y-auto rounded-xl bg-white shadow-md">
-        <div className="sticky left-0 right-0 top-0 z-50 flex w-full items-center justify-start bg-white px-7 py-3 shadow">
+    <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10 dark:bg-inherit">
+      <div className="relative w-2/3 min-w-[300px] overflow-y-auto rounded-xl bg-white shadow-md dark:bg-slate-800">
+        <div className="sticky left-0 right-0 top-0 z-50 flex w-full items-center justify-start bg-white px-7 py-3 shadow dark:bg-slate-800">
           <Avatar className="h-8 w-8">
             <AvatarImage src={picPick.src} alt="pic-pick" />
             <AvatarFallback />
@@ -56,7 +56,7 @@ export default async function ChatPage() {
         </div>
 
         <div className="p-8">
-          <p className="mx-[auto] mb-8 max-w-[100px] rounded-full bg-gray-200 px-2.5 py-1 text-center text-xs">
+          <p className="mx-[auto] mb-8 max-w-[100px] rounded-full bg-gray-200 px-2.5 py-1 text-center text-xs dark:border-2 dark:border-white dark:bg-slate-800">
             {`Today, ${dayjs(new Date()).format("MM/DD")}`}
           </p>
 

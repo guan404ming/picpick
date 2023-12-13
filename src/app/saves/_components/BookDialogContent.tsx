@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useState } from "react";
 
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -26,6 +27,7 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
   const { getIsFavourited } = useFavourite();
   const [saved, setSaved] = useState(false);
   const router = useRouter();
+  const { theme } = useTheme();
 
   useEffect(() => {
     (async () => {
@@ -35,10 +37,10 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
   }, [session, dep]);
 
   return (
-    <DialogContent className="flex max-w-[80%] justify-between p-12 max-md:p-10 max-sm:flex-col max-sm:text-xs sm:min-w-[90%] sm:space-x-4 md:min-w-[70%] md:space-x-10 lg:min-w-[46%] lg:max-w-[46%]">
+    <DialogContent className="flex max-w-[80%] justify-between p-12 max-md:p-10 max-sm:flex-col max-sm:text-xs sm:min-w-[90%] sm:space-x-4 md:min-w-[70%] md:space-x-10 lg:min-w-[60%] lg:max-w-[60%] xl:min-w-[50%] xl:max-w-[50%]">
       <div className="space-y-5">
         <div className="mb-2 flex items-start justify-between font-bold max-sm:items-center">
-          <p>{book.bookName}</p>
+          <p className="max-w-[85%]">{book.bookName}</p>
           <Bookmark
             onClick={() => {
               postFavourite({ bookId: book.id });
@@ -50,13 +52,19 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
               }
             }}
             className="ml-2 cursor-pointer max-sm:w-4"
-            fill={(dep !== undefined ? dep : saved) ? "true" : "none"}
+            fill={
+              (dep !== undefined ? dep : saved)
+                ? theme === "dark"
+                  ? "white"
+                  : "true"
+                : "none"
+            }
           ></Bookmark>
         </div>
         <div className="flex flex-col space-y-3">
           <div className="grid w-full grid-cols-2">
             <span className="mr-5 font-bold">By:</span>
-            <span>{book.bookName}</span>
+            <span>{book.author}</span>
           </div>
           <div className="grid w-full grid-cols-2">
             <span className="mr-5 font-bold">Topics: </span>
