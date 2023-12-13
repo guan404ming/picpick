@@ -37,22 +37,22 @@ export default function MessageList({ messageList }: MessageListProps) {
         effectRan.current = true;
         const isGreeting = !messageList[0].QUESTION && !messageList[0].BOOK;
         if (count === 0 && !isGreeting) {
-          handleGreet();
+          await handleGreet();
         }
       }
     })();
-  }, [count, messageList, router]);
+  }, [count, messageList, router, handleGreet]);
 
   useEffect(() => {
     (async () => {
       if (count === 3) {
-        handleGetResult({ answerList });
+        await handleGetResult({ answerList });
         setCount(0);
         effectRan.current = false;
         setAnswerList([]);
       }
     })();
-  }, [answerList, count, router]);
+  }, [answerList, count, router, handleGetResult]);
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
