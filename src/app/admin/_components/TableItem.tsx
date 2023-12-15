@@ -25,7 +25,7 @@ export function TableItem({ dataList }: TableItemProps) {
         {dataList.map((book, idx) => (
           <TableRow key={idx}>
             {Object.values(book).map((value, index) => (
-              <TableCell key={index}>{value}</TableCell>
+              <TableCell key={index}>{`${value}`}</TableCell>
             ))}
           </TableRow>
         ))}

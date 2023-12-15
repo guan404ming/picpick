@@ -5,31 +5,32 @@ import { TableItem } from "../_components/TableItem";
 import UploadButton from "../_components/UploadButton";
 
 import { db } from "@/db";
-import { bookTable, questionTable } from "@/db/schema";
+import { bookTable, messageTable, questionTable } from "@/db/schema";
 import { authOptions } from "@/lib/auth/auth";
 
 const tableMap = {
   book: bookTable,
   question: questionTable,
+  message: messageTable,
 };
 
 export default async function AdminBookPage({
   params,
 }: {
   params: {
-    tableName: "book" | "question";
+    tableName: "book" | "question" | "message";
   };
 }) {
   const session = await getServerSession(authOptions);
   const { tableName } = params;
-  let bookList = [];
+  let dataList = [];
 
   if (session?.user.role !== "admin") {
     redirect("/");
   }
 
   try {
-    bookList = await db.select().from(tableMap[tableName]);
+    dataList = await db.select().from(tableMap[tableName]);
   } catch (error) {
     console.log(error);
     redirect("/admin");
@@ -43,7 +44,11 @@ export default async function AdminBookPage({
         </h2>
         <UploadButton></UploadButton>
       </div>
-      <TableItem dataList={bookList}></TableItem>
+      {dataList.length === 0 ? (
+        <div>No data in this table</div>
+      ) : (
+        <TableItem dataList={dataList}></TableItem>
+      )}
     </div>
   );
 }
