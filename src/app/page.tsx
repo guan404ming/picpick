@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/separator";
 export default async function Home() {
   return (
     <div className="w-full p-6">
-      <div className="grid grid-cols-1 gap-7 rounded-lg bg-[#F0F0F0] p-10 text-center drop-shadow dark:bg-slate-800">
+      <div className="grid h-[55vh] grid-cols-1 gap-7 rounded-lg bg-[url('/light-bg.jpeg')] bg-cover bg-no-repeat p-10 text-center drop-shadow dark:bg-slate-800 dark:bg-[url('/dark-bg.jpeg')]">
         <p className="truncate text-4xl font-bold">PICPICK</p>
 
         <div className="text-xl max-md:space-y-2">
