@@ -31,7 +31,7 @@ export default async function AdminBookPage({
   console.log(bookList, tableMap);
 
   return (
-    <div className="mx-auto flex flex-col space-y-4 p-5">
+    <div className="mx-auto flex flex-col space-y-4 p-5 overflow-y-hidden max-h-screen">
       <div className="flex items-center space-x-4 border-b pb-2">
         <h2 className="mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           {tableName}
