@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 
+import { Toaster } from "@/components/ui/toaster";
 import NextAuthProvider from "@/lib/auth/NextAuthProvider";
 import { NextThemeProvider } from "@/lib/theme/NextThemesProvider";
 
-import { Toaster } from "@/components/ui/toaster"
 import Sider from "./_components/Sider";
 import "./globals.css";
 
