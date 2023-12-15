@@ -23,10 +23,8 @@ export default async function TableList() {
       </h1>
       <div className="px-4">
         {tableList.map((table, idx) => (
-          <Link href={`admin/${table.name}`} key={idx}>
-            <Alert
-              className="mb-3 min-w-[200px] align-middle drop-shadow-sm"
-            >
+          <Link href={`admin/${table.name.toLowerCase()}`} key={idx}>
+            <Alert className="mb-3 min-w-[200px] align-middle drop-shadow-sm">
               {table.icon}
               <AlertTitle className="mb-3 ml-2">{table.name}</AlertTitle>
               <AlertDescription className="ml-2 text-xs text-gray-500">

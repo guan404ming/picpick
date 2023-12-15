@@ -22,16 +22,21 @@ export default async function AdminBookPage({
 }) {
   const session = await getServerSession(authOptions);
   const { tableName } = params;
+  let bookList = [];
 
   if (session?.user.role !== "admin") {
     redirect("/");
   }
 
-  const bookList = await db.select().from(bookTable);
-  console.log(bookList, tableMap);
+  try {
+    bookList = await db.select().from(tableMap[tableName]);
+  } catch (error) {
+    console.log(error);
+    redirect("/admin");
+  }
 
   return (
-    <div className="mx-auto flex flex-col space-y-4 p-5 overflow-y-hidden max-h-screen">
+    <div className="mx-auto flex max-h-screen flex-col space-y-4 overflow-y-hidden p-5">
       <div className="flex items-center space-x-4 border-b pb-2">
         <h2 className="mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           {tableName}

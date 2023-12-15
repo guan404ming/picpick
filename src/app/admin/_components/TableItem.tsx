@@ -6,10 +6,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import type { SelectBook } from "@/lib/types/db";
 
 type TableItemProps = {
-  dataList: SelectBook[];
+  dataList: { id: number }[];
 };
 
 export function TableItem({ dataList }: TableItemProps) {
@@ -23,8 +22,8 @@ export function TableItem({ dataList }: TableItemProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {dataList.map((book) => (
-          <TableRow key={book.id}>
+        {dataList.map((book, idx) => (
+          <TableRow key={idx}>
             {Object.values(book).map((value, index) => (
               <TableCell key={index}>{value}</TableCell>
             ))}
