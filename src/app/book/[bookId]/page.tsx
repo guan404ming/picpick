@@ -1,11 +1,26 @@
+import { eq } from "drizzle-orm";
+
+import { db } from "@/db";
+import { bookTable } from "@/db/schema";
+
 import BookReader from "./_components/BookReader";
 
-export default function BookPage() {
+type BookPageProps = {
+  params: {
+    bookId: number;
+  };
+};
+
+export default async function BookPage({ params }: BookPageProps) {
+  const { bookId } = params;
+  const [book] = await db
+    .select()
+    .from(bookTable)
+    .where(eq(bookTable.id, bookId));
+
   return (
     <div className="w-full overflow-y-hidden p-4">
-      <BookReader
-        pdf={{ src: "https://react-reader.metabits.no/files/alice.epub" }}
-      ></BookReader>
+      <BookReader book={book}></BookReader>
     </div>
   );
 }

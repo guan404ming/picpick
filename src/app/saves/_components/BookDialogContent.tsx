@@ -78,7 +78,7 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
       </div>
 
       <div className="flex min-w-[200px] flex-col space-y-5 bg-[#E9E9E9] p-10 max-md:mx-[auto] max-md:p-6">
-        <Link href={"/book/123"}>
+        <Link href={`/book/${book.id}`}>
           <AspectRatio ratio={4 / 5} className="bg-muted">
             <Image
               src={`https://firebasestorage.googleapis.com/v0/b/quiztory-f5e09.appspot.com/o/cover%2F${book.bookId}.jpg?alt=media`}
