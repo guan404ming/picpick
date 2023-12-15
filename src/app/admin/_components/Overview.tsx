@@ -35,9 +35,7 @@ export function Overview({ messageList }: OverviewProps) {
     const result = [];
     for (let i = 0; i < 12; i++) {
       const hourLabel = startTime.add(i, "hour");
-      const name = `${hourLabel.format("HH:mm")}-${hourLabel
-        .add(1, "hour")
-        .format("HH:mm")}`;
+      const name = `${hourLabel.format("HH:mm")}`;
       result.push({
         name,
         total: counts[i],
