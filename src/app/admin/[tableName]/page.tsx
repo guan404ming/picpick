@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
+import { TableItem } from "../_components/TableItem";
 import UploadButton from "../_components/UploadButton";
 
 import { db } from "@/db";
@@ -37,6 +38,7 @@ export default async function AdminBookPage({
         </h2>
         <UploadButton></UploadButton>
       </div>
+      <TableItem dataList={bookList}></TableItem>
     </div>
   );
 }

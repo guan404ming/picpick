@@ -15,7 +15,7 @@ export default async function TableList() {
   ];
 
   return (
-    <div className="mt-3 max-md:hidden">
+    <div className="mt-3 w-[20vw] max-md:hidden">
       <h1 className="flex items-center space-x-2 truncate bg-white px-4 py-4 pt-5 text-lg font-semibold">
         <p>🧑‍💻 &nbsp;Table Overview</p>
       </h1>

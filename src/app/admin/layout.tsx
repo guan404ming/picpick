@@ -8,8 +8,8 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex max-h-screen w-full max-w-7xl overflow-hidden">
-      <div className="w-full">{children}</div>
+    <div className="flex max-h-screen w-full max-w-6xl">
+      <div className="min-w-[76vw]">{children}</div>
       <Separator orientation="vertical" />
       <TableList />
     </div>
