@@ -4,6 +4,7 @@ import { Noto_Sans } from "next/font/google";
 import NextAuthProvider from "@/lib/auth/NextAuthProvider";
 import { NextThemeProvider } from "@/lib/theme/NextThemesProvider";
 
+import { Toaster } from "@/components/ui/toaster"
 import Sider from "./_components/Sider";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
               <main className="flex max-h-screen w-full overflow-y-scroll">
                 {children}
               </main>
+              <Toaster />
             </NextThemeProvider>
           </div>
         </body>
