@@ -64,6 +64,7 @@ export default function useChat() {
       return;
     }
 
+    router.refresh();
     setLoading(false);
   };
 
@@ -78,7 +79,6 @@ export default function useChat() {
       questionId: null,
       bookId: null,
     });
-    router.refresh();
 
     setLoading(false);
   };
@@ -103,7 +103,6 @@ export default function useChat() {
       bookId: null,
     });
 
-    router.refresh();
     setLoading(false);
 
     return body;
@@ -116,7 +115,6 @@ export default function useChat() {
       questionId: null,
       bookId: null,
     });
-    router.refresh();
   };
 
   const handleGetResult = async ({ answerList }: { answerList: string[] }) => {
@@ -129,8 +127,6 @@ export default function useChat() {
         bookId: book_.id,
       });
     }
-
-    router.refresh();
   };
 
   return {

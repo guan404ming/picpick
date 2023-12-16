@@ -47,10 +47,10 @@ export default function MessageList({ messageList }: MessageListProps) {
   useEffect(() => {
     (async () => {
       if (count === 3) {
-        await handleGetResult({ answerList });
         setCount(0);
-        effectRan.current = false;
         setAnswerList([]);
+        await handleGetResult({ answerList });
+        effectRan.current = false;
       }
     })();
   }, [answerList, count, handleGetResult]);
