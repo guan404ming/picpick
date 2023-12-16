@@ -2,8 +2,6 @@
 
 import { useEffect, useState, useRef } from "react";
 
-import { useRouter } from "next/navigation";
-
 import useChat from "@/hooks/useChat";
 import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 
@@ -23,7 +21,6 @@ type MessageListProps = {
 export default function MessageList({ messageList }: MessageListProps) {
   const [count, setCount] = useState(0);
   const [answerList, setAnswerList] = useState<string[]>([]);
-  const router = useRouter();
   const { handleGreet, handleGetResult } = useChat();
   const effectRan = useRef(false);
 
@@ -45,7 +42,7 @@ export default function MessageList({ messageList }: MessageListProps) {
         }
       }
     })();
-  }, [count, messageList, router, handleGreet]);
+  }, [count, messageList, handleGreet]);
 
   useEffect(() => {
     (async () => {
@@ -56,7 +53,7 @@ export default function MessageList({ messageList }: MessageListProps) {
         setAnswerList([]);
       }
     })();
-  }, [answerList, count, router, handleGetResult]);
+  }, [answerList, count, handleGetResult]);
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
