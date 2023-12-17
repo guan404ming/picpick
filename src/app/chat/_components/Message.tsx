@@ -75,7 +75,7 @@ export default function Message({
                       key={idx}
                       onClick={async (e) => {
                         e.preventDefault();
-                        await handlePostAnswer({ answer: `Option ${idx + 1}` });
+                        await handlePostAnswer({ answer: `${idx + 1}` });
                         setCount((prev) => prev + 1);
                         setAnswerList((prev) => [
                           ...prev,
@@ -84,7 +84,7 @@ export default function Message({
                         if (count + 1 < 3) await handleGetQuestion();
                       }}
                     >
-                      Option {idx + 1}
+                      {idx + 1}
                     </Button>
                   ),
               )}
