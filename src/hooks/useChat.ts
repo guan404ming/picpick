@@ -2,42 +2,49 @@ import { useState } from "react";
 
 import { useRouter } from "next/navigation";
 
-// import { publicEnv } from "@/lib/env/public";
-import bookList from "@/assets/book.json";
+import { publicEnv } from "@/lib/env/public";
 import type { SelectBook } from "@/lib/types/db";
 
 export default function useChat() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const getBook = ({ answer }: { answer: string }) => {
+  const getBook = async ({ answer }: { answer: string }) => {
+    // Return early if already loading
     if (loading) return;
-
     setLoading(true);
 
-    // const res = await fetch(
-    //   `${publicEnv.NEXT_PUBLIC_MODEL_BASE_URL}/predictions/dpr`,
-    //   {
-    //     method: "POST",
-    //     body: answer,
-    //   },
-    // );
+    try {
+      // Fetch book data from the API
+      const searchResponse = await fetch(
+        `${publicEnv.NEXT_PUBLIC_MODEL_BASE_URL}/indexes/picbook/docs?api-version=2020-06-30&search=${answer}`,
+        {
+          method: "GET",
+          headers: {
+            "api-key": publicEnv.NEXT_PUBLIC_MODEL_API_KEY,
+          },
+        },
+      );
+      if (!searchResponse.ok) {
+        throw new Error(`API responded with status: ${searchResponse.status}`);
+      }
+      const searchData = await searchResponse.json();
 
-    // if (!res.ok) {
-    //   return;
-    // }
+      // Fetch detailed book information
+      const bookResponse = await fetch(`/api/book/${searchData.value[0].id}`);
+      if (!bookResponse.ok) {
+        throw new Error(
+          `Book details API responded with status: ${bookResponse.status}`,
+        );
+      }
 
-    // const body: {
-    //   id: string;
-    // } = await res.json();
-
-    console.log(answer);
-    setLoading(false);
-
-    const res: SelectBook =
-      bookList[Math.floor(Math.random() * bookList.length)];
-
-    return res;
+      const bookData: SelectBook = await bookResponse.json();
+      return bookData;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const postMessage = async ({
@@ -118,8 +125,8 @@ export default function useChat() {
   };
 
   const handleGetResult = async ({ answerList }: { answerList: string[] }) => {
-    const book_ = getBook({ answer: answerList.join(" ") });
-    if (book_?.id) {
+    const book_ = await getBook({ answer: answerList.join(" ") });
+    if (book_) {
       await postMessage({
         content: "Recommendation",
         sender: "system",
