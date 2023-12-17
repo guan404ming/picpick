@@ -14,6 +14,7 @@ import { authOptions } from "@/lib/auth/auth";
 
 import { ApiStatus } from "./_components/ApiStatus";
 import { Overview } from "./_components/Overview";
+import UploadButton from "./_components/UploadButton";
 
 export default async function AdminPage() {
   const session = await getServerSession(authOptions);
@@ -30,7 +31,15 @@ export default async function AdminPage() {
         Admin
       </h2>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        <Card className="col-span-4">
+        <Card className="col-span-7">
+          <CardHeader>
+            <CardTitle>Data Generator</CardTitle>
+          </CardHeader>
+          <CardContent className="pl-6">
+            <UploadButton></UploadButton>
+          </CardContent>
+        </Card>
+        <Card className="col-span-4 max-h-[400px]">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
@@ -38,12 +47,12 @@ export default async function AdminPage() {
             <Overview messageList={messageList} />
           </CardContent>
         </Card>
-        <Card className="col-span-3 max-h-[550px] overflow-scroll">
+        <Card className="col-span-3 max-h-[400px]">
           <CardHeader>
             <CardTitle>API status</CardTitle>
             <CardDescription>Check real time API status</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-0">
             <ApiStatus />
           </CardContent>
         </Card>

@@ -2,7 +2,6 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
 import { TableItem } from "../_components/TableItem";
-import UploadButton from "../_components/UploadButton";
 
 import { db } from "@/db";
 import { bookTable, messageTable, questionTable } from "@/db/schema";
@@ -42,7 +41,6 @@ export default async function AdminBookPage({
         <h2 className="mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
           {tableName}
         </h2>
-        <UploadButton></UploadButton>
       </div>
       {dataList.length === 0 ? (
         <div>No data in this table</div>

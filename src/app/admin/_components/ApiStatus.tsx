@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function ApiStatus() {
   return (
-    <div className="space-y-8">
+    <div className="max-h-[300px] space-y-8 overflow-scroll px-6">
       <div className="flex items-center">
         <div className="ml-4 space-y-1">
           <div className="flex items-center space-x-2 text-sm font-medium leading-none">

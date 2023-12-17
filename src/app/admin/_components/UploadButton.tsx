@@ -19,9 +19,10 @@ export default function UploadButton() {
   }
 
   return (
-    <div>
+    <div className="flex items-center space-x-8">
+      <p>Generate Books and Questions</p>
       <Button size={"sm"} onClick={() => initDB()}>
-        Upload
+        Click to Generate
       </Button>
     </div>
   );
