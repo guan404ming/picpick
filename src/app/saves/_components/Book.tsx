@@ -8,15 +8,8 @@ import Image from "next/image";
 import { Bookmark } from "lucide-react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { Progress } from "@/components/ui/progress";
 import useFavourite from "@/hooks/useFavourite";
 import type { SelectFavourite, SelectBook } from "@/lib/types/db";
 
@@ -64,12 +57,6 @@ export default function Book({ book }: BookProps) {
             </AspectRatio>
           </CardContent>
         </DialogTrigger>
-        <CardFooter>
-          <Progress
-            value={Math.floor(Math.random() * 100)}
-            className="mx-4 h-2"
-          />
-        </CardFooter>
       </Card>
 
       <BookDialogContent

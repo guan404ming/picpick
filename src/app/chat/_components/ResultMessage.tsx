@@ -67,7 +67,10 @@ export default function ResultMessage({ message }: ResultMessageProps) {
           </div>
 
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            <Link href={`/book/${message.BOOK.id}`}>
+            <Link
+              target="_blank"
+              href={`https://archive.org/details/${message.BOOK.bookId}/mode/2up?view=theater`}
+            >
               <Button className="block w-full" size="lg">
                 Read
               </Button>

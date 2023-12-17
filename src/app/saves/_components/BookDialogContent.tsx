@@ -10,7 +10,6 @@ import { Bookmark } from "lucide-react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { DialogContent } from "@/components/ui/dialog";
-import { Progress } from "@/components/ui/progress";
 import useFavourite from "@/hooks/useFavourite";
 import useUserInfo from "@/hooks/useUserInfo";
 import type { SelectBook } from "@/lib/types/db";
@@ -78,7 +77,10 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
       </div>
 
       <div className="flex min-w-[200px] flex-col space-y-5 bg-[#E9E9E9] p-10 max-md:mx-[auto] max-md:p-6">
-        <Link href={`/book/${book.id}`}>
+        <Link
+          target="_blank"
+          href={`https://archive.org/details/${book.bookId}/mode/2up?view=theater`}
+        >
           <AspectRatio ratio={4 / 5} className="bg-muted">
             <Image
               src={`https://firebasestorage.googleapis.com/v0/b/quiztory-f5e09.appspot.com/o/cover%2F${book.bookId}.jpg?alt=media`}
@@ -89,8 +91,6 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
             />
           </AspectRatio>
         </Link>
-
-        <Progress value={Math.floor(Math.random() * 100)} className="h-2" />
       </div>
     </DialogContent>
   );
