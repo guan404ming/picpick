@@ -45,8 +45,8 @@ export default async function ChatPage() {
   }));
 
   return (
-    <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10 dark:bg-inherit">
-      <div className="relative h-full w-2/3 min-w-[300px] overflow-y-auto rounded-xl bg-white shadow-md dark:bg-slate-800">
+    <div className="flex w-full flex-col items-center justify-center bg-[#BEBEBE] py-10 dark:bg-inherit max-md:py-0">
+      <div className="relative h-full w-2/3 min-w-[300px] overflow-y-auto rounded-xl bg-white shadow-md dark:bg-slate-800 max-md:w-full max-md:rounded-none">
         <div className="sticky left-0 right-0 top-0 z-50 flex w-full items-center justify-start bg-white px-7 py-3 shadow dark:bg-slate-800">
           <Avatar className="h-8 w-8">
             <AvatarImage src={picPick.src} alt="pic-pick" />
