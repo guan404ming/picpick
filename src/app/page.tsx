@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
@@ -15,10 +17,11 @@ export default async function Home() {
             Unlock your Personalized PicBook with PICPICK!
           </p>
         </div>
-
-        <Button className="mx-auto w-1/6 p-6 text-xl drop-shadow-lg max-md:w-[100px]">
-          Start
-        </Button>
+        <Link href={"/chat"}>
+          <Button className="mx-auto w-1/6 p-6 text-xl drop-shadow-lg max-md:w-[100px]">
+            Start
+          </Button>
+        </Link>
       </div>
 
       <Separator className="my-8"></Separator>
