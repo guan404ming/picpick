@@ -48,11 +48,9 @@ export const bookTable = pgTable("BOOK", {
   bookId: varchar("book_id", { length: 256 }).unique(),
   bookName: varchar("book_name", { length: 256 }).notNull(),
   pdfLink: varchar("pdf_link", { length: 512 }),
-  epubLink: varchar("epub_link", { length: 512 }).notNull(),
   author: varchar("author", { length: 256 }),
   publishDate: varchar("publish_date", { length: 256 }),
   topics: varchar("topics", { length: 256 }),
-  language: varchar("language", { length: 256 }),
   publisher: varchar("publisher", { length: 256 }),
 });
 
