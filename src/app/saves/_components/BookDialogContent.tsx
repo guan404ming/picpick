@@ -63,15 +63,15 @@ export default function Book({ book, dep, setDep }: BookDialogContentProps) {
         </div>
         <div className="flex flex-col space-y-3">
           <div className="grid w-full grid-cols-2">
-            <span className="mr-5 font-bold">By:</span>
+            <span className="mr-5 font-bold">By</span>
             <span>{book.author}</span>
           </div>
           <div className="grid w-full grid-cols-2">
-            <span className="mr-5 font-bold">Topics: </span>
+            <span className="mr-5 font-bold">Topics</span>
             <span>{book.topics}</span>
           </div>
           <div className="grid w-full grid-cols-2">
-            <span className="mr-5 font-bold">Publish Date:</span>
+            <span className="mr-5 font-bold">Publish Date</span>
             <span>{book.publishDate}</span>
           </div>
         </div>
