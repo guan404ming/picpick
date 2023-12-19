@@ -40,40 +40,54 @@ export const favouriteTable = pgTable(
   },
   (table) => ({
     unq: unique().on(table.userId, table.bookId),
+    createdAtIndex: index("createdAt_index").on(table.createdAt),
   }),
 );
 
-export const bookTable = pgTable("BOOK", {
-  id: serial("id").primaryKey(),
-  bookId: varchar("book_id", { length: 256 }).unique(),
-  bookName: varchar("book_name", { length: 256 }).notNull(),
-  pdfLink: varchar("pdf_link", { length: 512 }),
-  author: varchar("author", { length: 256 }),
-  publishDate: varchar("publish_date", { length: 256 }),
-  topics: varchar("topics", { length: 256 }),
-  publisher: varchar("publisher", { length: 256 }),
-});
+export const bookTable = pgTable(
+  "BOOK",
+  {
+    id: serial("id").primaryKey(),
+    bookId: varchar("book_id", { length: 256 }).unique(),
+    bookName: varchar("book_name", { length: 256 }).notNull(),
+    pdfLink: varchar("pdf_link", { length: 512 }),
+    author: varchar("author", { length: 256 }),
+    publishDate: varchar("publish_date", { length: 256 }),
+    topics: varchar("topics", { length: 256 }),
+    publisher: varchar("publisher", { length: 256 }),
+  },
+  (table) => ({
+    bookIdIndex: index("bookId_index").on(table.bookId),
+  }),
+);
 
-export const messageTable = pgTable("MESSAGE", {
-  id: serial("id").primaryKey(),
-  questionId: integer("question_id").references(() => questionTable.id, {
-    onDelete: "cascade",
-    onUpdate: "cascade",
-  }),
-  bookId: integer("book_id").references(() => bookTable.id, {
-    onDelete: "cascade",
-    onUpdate: "cascade",
-  }),
-  userId: integer("user_id")
-    .references(() => userTable.id, {
+export const messageTable = pgTable(
+  "MESSAGE",
+  {
+    id: serial("id").primaryKey(),
+    questionId: integer("question_id").references(() => questionTable.id, {
       onDelete: "cascade",
       onUpdate: "cascade",
-    })
-    .notNull(),
-  content: varchar("content", { length: 512 }).notNull(),
-  sender: varchar("sender", { enum: ["user", "system"] }).notNull(),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
-});
+    }),
+    bookId: integer("book_id").references(() => bookTable.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+    userId: integer("user_id")
+      .references(() => userTable.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      })
+      .notNull(),
+    content: varchar("content", { length: 512 }).notNull(),
+    sender: varchar("sender", { enum: ["user", "system"] }).notNull(),
+    createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  },
+  (table) => ({
+    createdAtIndex: index("createdAt_index").on(table.createdAt),
+    userIdIndex: index("userId_index").on(table.userId),
+  }),
+);
 
 export const questionTable = pgTable("QUESTION", {
   id: serial("id").primaryKey(),
