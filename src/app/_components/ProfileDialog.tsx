@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import useUserInfo from "@/hooks/useUserInfo";
+import { cn } from "@/lib/utils";
 
 import { SettingForm } from "./SettingForm";
 
@@ -52,11 +53,20 @@ export default function ProfileDialog() {
         </div>
       </DialogTrigger>
 
-      <DialogContent className="max-sm:max-w-[70%]">
-        <DialogHeader>
-          <DialogTitle>Welcome to PicPick!</DialogTitle>
-          <DialogDescription>Sign in to pick all Picbooks~~</DialogDescription>
-        </DialogHeader>
+      <DialogContent
+        className={cn(
+          `${session?.user && "p-10 pb-2 pt-6"}`,
+          "max-sm:max-w-[70%]",
+        )}
+      >
+        {!session && (
+          <DialogHeader>
+            <DialogTitle>Welcome to PicPick!</DialogTitle>
+            <DialogDescription>
+              Sign in to pick all Picbooks~~
+            </DialogDescription>
+          </DialogHeader>
+        )}
 
         {session && <SettingForm></SettingForm>}
 
@@ -66,12 +76,6 @@ export default function ProfileDialog() {
             onClick={() => signIn()}
           >
             Login
-          </Button>
-          <Button
-            className={`round-xl ${!session?.user && "hidden"}`}
-            onClick={() => signOut()}
-          >
-            Logout
           </Button>
         </DialogFooter>
       </DialogContent>
