@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 
+import dayjs from "dayjs";
 import { Bookmark } from "lucide-react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -31,14 +32,20 @@ export default function Book({ book }: BookProps) {
     <Dialog>
       <Card className="w-[300px] text-center drop-shadow max-sm:w-[200px]">
         <CardHeader>
-          <CardTitle className="text-md mb-2 flex justify-between">
-            <p className="max-w-[80%] truncate">{book.BOOK.bookName}</p>
+          <CardTitle className="text-md mb-2 flex items-start justify-between">
+            <div className="flex max-w-[80%] flex-col truncate text-left">
+              <p>{book.BOOK.bookName}</p>
+              <p className="text-sm font-light text-gray-400">{`${dayjs(
+                book.FAVOURITE.createdAt,
+              ).format("MM / DD / YYYY ")}`}</p>
+            </div>
+
             <Bookmark
               onClick={() => {
                 postFavourite({ bookId: book.BOOK.id });
                 setSaved(!saved);
               }}
-              className="cursor-pointer"
+              className="mt-1 cursor-pointer"
               width={20}
               fill={saved ? (theme === "dark" ? "white" : "true") : "none"}
             ></Bookmark>
