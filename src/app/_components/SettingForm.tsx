@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { signOut } from "next-auth/react";
@@ -46,7 +45,6 @@ export function SettingForm() {
           Logout
         </Button>
       </div>
-
       <Separator />
 
       <div className="flex items-center space-x-3">

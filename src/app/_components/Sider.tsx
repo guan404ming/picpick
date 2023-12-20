@@ -15,7 +15,7 @@ export default function Sider() {
 
   return (
     <aside
-      className={`flex h-screen flex-col justify-between bg-[#F0F0F0] px-4 py-6 text-center dark:bg-slate-800 max-md:px-1 max-md:py-2`}
+      className={`flex h-screen flex-col justify-between bg-[#F0F0F0] px-4 py-6 text-center dark:bg-[#131313] max-md:px-1 max-md:py-2`}
     >
       <div className="flex flex-col">
         <SiderButton Icon={Home} text="Home" router="/" />

@@ -31,7 +31,7 @@ export default function Book({ book }: BookProps) {
   return (
     <Dialog>
       <Card className="w-[300px] text-center drop-shadow max-sm:w-[200px]">
-        <CardHeader>
+        <CardHeader className="pb-2">
           <CardTitle className="text-md mb-2 flex items-start justify-between">
             <div className="flex max-w-[80%] flex-col truncate text-left">
               <p>{book.BOOK.bookName}</p>

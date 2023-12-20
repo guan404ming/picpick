@@ -49,7 +49,7 @@ export default function ResultMessage({ message }: ResultMessageProps) {
             "my-2 flex flex-col justify-center space-y-2 rounded-xl bg-[#88888840] p-4 text-black dark:text-white"
           }
         >
-          <p className="text-sm">Here is our recommendation: </p>
+          <p>Here is our recommendation: </p>
           <div>
             <span>Book Name: </span>
             <span>{message.BOOK.bookName}</span>
