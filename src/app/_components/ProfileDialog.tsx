@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { signIn } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,14 +25,25 @@ import { SettingForm } from "./SettingForm";
 export default function ProfileDialog() {
   const { session } = useUserInfo();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   const handleOpenChange = (open: boolean) => {
     if (open) {
       setDialogOpen(true);
     } else {
       setDialogOpen(false);
+      if (searchParams.get("open")) {
+        router.push("/");
+      }
     }
   };
+
+  useEffect(() => {
+    if (searchParams.get("open")) {
+      setDialogOpen(true);
+    }
+  }, [searchParams]);
 
   return (
     <Dialog open={dialogOpen} onOpenChange={handleOpenChange}>

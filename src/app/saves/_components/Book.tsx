@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-import { useTheme } from "next-themes";
 import Image from "next/image";
 
 import dayjs from "dayjs";
@@ -13,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import useFavourite from "@/hooks/useFavourite";
 import type { SelectFavourite, SelectBook } from "@/lib/types/db";
+import { cn } from "@/lib/utils";
 
 import BookDialogContent from "./BookDialogContent";
 
@@ -26,7 +26,6 @@ type BookProps = {
 export default function Book({ book }: BookProps) {
   const [saved, setSaved] = useState(true);
   const { postFavourite } = useFavourite();
-  const { theme } = useTheme();
 
   return (
     <Dialog>
@@ -45,9 +44,11 @@ export default function Book({ book }: BookProps) {
                 postFavourite({ bookId: book.BOOK.id });
                 setSaved(!saved);
               }}
-              className="mt-1 cursor-pointer"
+              className={cn(
+                "mt-1 cursor-pointer",
+                `${saved ? "fill-black dark:fill-white" : "fill-none"}`,
+              )}
               width={20}
-              fill={saved ? (theme === "dark" ? "white" : "true") : "none"}
             ></Bookmark>
           </CardTitle>
         </CardHeader>

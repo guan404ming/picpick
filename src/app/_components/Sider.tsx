@@ -19,8 +19,16 @@ export default function Sider() {
     >
       <div className="flex flex-col">
         <SiderButton Icon={Home} text="Home" router="/" />
-        <SiderButton Icon={Bot} text="Chat" router="/chat" />
-        <SiderButton Icon={Bookmark} text="Saves" router="/saves" />
+        <SiderButton
+          Icon={Bot}
+          text="Chat"
+          router={session?.user ? "/chat" : "?open=true"}
+        />
+        <SiderButton
+          Icon={Bookmark}
+          text="Saves"
+          router={session?.user ? "/saves" : "?open=true"}
+        />
         {session?.user.role === "admin" && (
           <SiderButton Icon={UserCog} text="Admin" router="/admin" />
         )}
