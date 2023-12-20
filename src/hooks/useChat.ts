@@ -95,7 +95,9 @@ export default function useChat() {
 
     setLoading(true);
 
-    const res = await fetch(`/api/question/${new Date().getSeconds() % 30}`);
+    const res = await fetch(
+      `/api/question/${(new Date().getSeconds() % 30) + 1}`,
+    );
 
     if (!res.ok) {
       return;

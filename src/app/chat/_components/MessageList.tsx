@@ -6,6 +6,7 @@ import useChat from "@/hooks/useChat";
 import type { SelectBook, SelectMessage, SelectQuestion } from "@/lib/types/db";
 
 import GreetingMessage from "./GreetingMessage";
+import LoadingMessage from "./LoadingMessage";
 import Message from "./Message";
 import ResultMessage from "./ResultMessage";
 
@@ -21,7 +22,7 @@ type MessageListProps = {
 export default function MessageList({ messageList }: MessageListProps) {
   const [count, setCount] = useState(0);
   const [answerList, setAnswerList] = useState<string[]>([]);
-  const { handleGreet, handleGetResult } = useChat();
+  const { handleGreet, handleGetResult, loading } = useChat();
   const effectRan = useRef(false);
 
   useEffect(() => {
@@ -56,6 +57,7 @@ export default function MessageList({ messageList }: MessageListProps) {
 
   return (
     <div className="flex grow flex-col-reverse space-y-2 overflow-y-auto">
+      {loading && <LoadingMessage />}
       {messageList.map((message) => (
         <div key={message.MESSAGE.id}>
           {!message.BOOK ? (
